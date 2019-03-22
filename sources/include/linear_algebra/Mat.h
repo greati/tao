@@ -13,7 +13,7 @@ namespace tao {
 template<typename T>
 class Mat {
 
-    private:
+    protected:
 
         std::unique_ptr<T[]> data;      /** Matrix data */
         int rows {0};                   /** Number of rows */

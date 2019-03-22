@@ -1,6 +1,5 @@
 #include "linear_algebra/Mat.h"
 
-
 template<typename T>
 tao::Mat<T>::Mat(int dim) : tao::Mat<T>::Mat(dim, dim) { /* empty */}
 
@@ -99,3 +98,4 @@ std::pair<int, int> tao::Mat<T>::validate(const std::initializer_list<std::initi
 
 template class tao::Mat<float>;
 template class tao::Mat<double>;
+template class tao::Mat<int>;

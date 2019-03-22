@@ -30,7 +30,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(tao src/linear_algebra/Mat.cpp)
+add_library(tao src/linear_algebra/Mat.cpp src/linear_algebra/Col.cpp src/linear_algebra/Row.cpp)
 target_include_directories(tao PUBLIC include)
 
 # executables
@@ -54,6 +54,8 @@ include(GoogleTest)
 set(test_sources ${test_sources}
     tests/main.cpp
     tests/mat_tests.cpp
+    tests/col_tests.cpp
+    tests/row_tests.cpp
 )
 
 add_executable(maintest ${test_sources})
