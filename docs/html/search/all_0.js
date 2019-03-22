@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mat',['Mat',['../classtao_1_1_mat.html',1,'tao::Mat&lt; T &gt;'],['../classtao_1_1_mat.html#a22ea16d2a3e3a1da5eb7de57e5bf02c2',1,'tao::Mat::Mat(int dim)'],['../classtao_1_1_mat.html#a8b2f68a1f5539462e6f4186bc5f8a5c7',1,'tao::Mat::Mat(int rows, int cols)'],['../classtao_1_1_mat.html#a83589751aea3dcecc363068fd540a930',1,'tao::Mat::Mat(int rows, int cols, T val)'],['../classtao_1_1_mat.html#a2c26859cc4b8bf40eb26dd4335f2d3c0',1,'tao::Mat::Mat(const std::initializer_list&lt; std::initializer_list&lt; T &gt;&gt; &amp;elements)']]]
+  ['col',['Col',['../classtao_1_1_col.html',1,'tao::Col&lt; T &gt;'],['../classtao_1_1_col.html#a9133bec2b352e2e139e51e1f9107473d',1,'tao::Col::Col()']]],
+  ['cols',['cols',['../classtao_1_1_mat.html#a80e80ef1ee80e33719d9637153186ee4',1,'tao::Mat']]]
 ];

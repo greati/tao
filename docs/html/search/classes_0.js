@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mat',['Mat',['../classtao_1_1_mat.html',1,'tao']]]
+  ['col',['Col',['../classtao_1_1_col.html',1,'tao']]]
 ];

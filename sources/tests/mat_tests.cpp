@@ -151,4 +151,65 @@ namespace {
         ASSERT_THROW(mat(-1, -1), std::invalid_argument);
         ASSERT_THROW(mat(10, 10), std::invalid_argument);
     }
+
+    TEST(MatDouble, SetValue) {
+        tao::Mat<double> mat {
+            {1.0, 2.0, 3.0, 4.0},
+            {3.0, 4.0, 10.0, 20.0}
+        };
+        ASSERT_FLOAT_EQ(mat(0, 0), 1.0);
+        mat(0, 0) = 100.0;
+        ASSERT_FLOAT_EQ(mat(0, 0), 100.0);
+        mat(0, 0) = 30.0;
+        ASSERT_FLOAT_EQ(mat(0, 0), 30.0);
+        mat(1, 3) = 1231.0;
+        ASSERT_FLOAT_EQ(mat(1, 3), 1231.0);
+    }
+
+
+    TEST(MatDouble, ElementWiseOperations) {
+        tao::Mat<double> mat1 {
+            {1.0, 2.0},
+            {3.0, 4.0}
+        }; 
+
+        tao::Mat<double> mat2 {
+            {5.0, 6.0},
+            {7.0, 8.0}
+        };
+
+        tao::Mat<double> matsum {
+            {6.0, 8.0},
+            {10.0, 12.0}
+        };
+
+        tao::Mat<double> matsub {
+            {-4.0, -4.0},
+            {-4.0, -4.0}
+        };
+
+        ASSERT_TRUE(mat1 + mat2 == matsum);
+        ASSERT_TRUE((mat1 - mat2) == matsub);
+    }
+
+    TEST(MatDouble, MatrixMultiplication) {
+        tao::Mat<double> mat1 {
+            {1.0, 2.0},
+            {3.0, 4.0}
+        }; 
+
+        tao::Mat<double> mat2 {
+            {5.0, 6.0},
+            {7.0, 8.0}
+        };
+
+        tao::Mat<double> mat3 {
+            {5.0, 6.0, 10.0},
+            {7.0, 8.0, 11.0}
+        };
+
+        ASSERT_TRUE((mat1 * mat2) == (tao::Mat<double>{{19.0, 22.0},{43.0, 50.0}}));
+        ASSERT_TRUE((mat1 * mat3) == (tao::Mat<double>{{19.0, 22.0, 32.0}, {43.0, 50.0, 74.0}}));
+    }
+
 };
