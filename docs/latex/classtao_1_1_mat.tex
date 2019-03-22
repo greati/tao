@@ -1,0 +1,166 @@
+\hypertarget{classtao_1_1_mat}{}\section{tao\+::Mat$<$ T $>$ Class Template Reference}
+\label{classtao_1_1_mat}\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtao_1_1_mat_a22ea16d2a3e3a1da5eb7de57e5bf02c2}{Mat}} (int dim)
+\begin{DoxyCompactList}\small\item\em Number of cols. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtao_1_1_mat_a8b2f68a1f5539462e6f4186bc5f8a5c7}{Mat}} (int rows, int cols)
+\begin{DoxyCompactList}\small\item\em Constructor based on size only. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtao_1_1_mat_a83589751aea3dcecc363068fd540a930}{Mat}} (int rows, int cols, T val)
+\begin{DoxyCompactList}\small\item\em Constructor based on size and a fill value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtao_1_1_mat_a2c26859cc4b8bf40eb26dd4335f2d3c0}{Mat}} (const std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$$>$ \&elements)
+\begin{DoxyCompactList}\small\item\em Construtor based on an initializer list. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classtao_1_1_mat_a797011ee56086e6770c1fa25e7771cb7}{operator()}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Row-\/column access operator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtao_1_1_mat_a6391b9b7e8b36ceeb341e8bd94952d5c}{nrows}} () const
+\begin{DoxyCompactList}\small\item\em The number of rows. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtao_1_1_mat_ae13a111423bb288f81a3c2ff132955f7}{ncols}} () const
+\begin{DoxyCompactList}\small\item\em The number of cols. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtao_1_1_mat_a503d508f8f80c64a494f323649f20c55}{reset}} (const T \&val)
+\begin{DoxyCompactList}\small\item\em Reset matrix with a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtao_1_1_mat_a22ea16d2a3e3a1da5eb7de57e5bf02c2}\label{classtao_1_1_mat_a22ea16d2a3e3a1da5eb7de57e5bf02c2}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!Mat@{Mat}}
+\index{Mat@{Mat}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::\mbox{\hyperlink{classtao_1_1_mat}{Mat}} (\begin{DoxyParamCaption}\item[{int}]{dim }\end{DoxyParamCaption})}
+
+
+
+Number of cols. 
+
+Constructor of square matrices based on size only.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & number of rows and cols \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtao_1_1_mat_a8b2f68a1f5539462e6f4186bc5f8a5c7}\label{classtao_1_1_mat_a8b2f68a1f5539462e6f4186bc5f8a5c7}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!Mat@{Mat}}
+\index{Mat@{Mat}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::\mbox{\hyperlink{classtao_1_1_mat}{Mat}} (\begin{DoxyParamCaption}\item[{int}]{rows,  }\item[{int}]{cols }\end{DoxyParamCaption})}
+
+
+
+Constructor based on size only. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & number of rows \\
+\hline
+{\em cols} & number of cols \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtao_1_1_mat_a83589751aea3dcecc363068fd540a930}\label{classtao_1_1_mat_a83589751aea3dcecc363068fd540a930}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!Mat@{Mat}}
+\index{Mat@{Mat}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::\mbox{\hyperlink{classtao_1_1_mat}{Mat}} (\begin{DoxyParamCaption}\item[{int}]{rows,  }\item[{int}]{cols,  }\item[{T}]{val }\end{DoxyParamCaption})}
+
+
+
+Constructor based on size and a fill value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & number of rows \\
+\hline
+{\em cols} & number of cols \\
+\hline
+{\em fill} & value to fill \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtao_1_1_mat_a2c26859cc4b8bf40eb26dd4335f2d3c0}\label{classtao_1_1_mat_a2c26859cc4b8bf40eb26dd4335f2d3c0}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!Mat@{Mat}}
+\index{Mat@{Mat}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{Mat()}{Mat()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::\mbox{\hyperlink{classtao_1_1_mat}{Mat}} (\begin{DoxyParamCaption}\item[{const std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$$>$ \&}]{elements }\end{DoxyParamCaption})}
+
+
+
+Construtor based on an initializer list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elements} & the elements \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtao_1_1_mat_ae13a111423bb288f81a3c2ff132955f7}\label{classtao_1_1_mat_ae13a111423bb288f81a3c2ff132955f7}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!ncols@{ncols}}
+\index{ncols@{ncols}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{ncols()}{ncols()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::ncols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of cols. 
+
+\begin{DoxyReturn}{Returns}
+the number of cols 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtao_1_1_mat_a6391b9b7e8b36ceeb341e8bd94952d5c}\label{classtao_1_1_mat_a6391b9b7e8b36ceeb341e8bd94952d5c}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!nrows@{nrows}}
+\index{nrows@{nrows}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{nrows()}{nrows()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::nrows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of rows. 
+
+\begin{DoxyReturn}{Returns}
+the number of rows 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtao_1_1_mat_a797011ee56086e6770c1fa25e7771cb7}\label{classtao_1_1_mat_a797011ee56086e6770c1fa25e7771cb7}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Row-\/column access operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row, starting at top \\
+\hline
+{\em col} & the col, starting at left \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtao_1_1_mat_a503d508f8f80c64a494f323649f20c55}\label{classtao_1_1_mat_a503d508f8f80c64a494f323649f20c55}} 
+\index{tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}!reset@{reset}}
+\index{reset@{reset}!tao::Mat$<$ T $>$@{tao::Mat$<$ T $>$}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classtao_1_1_mat}{tao\+::\+Mat}}$<$ T $>$\+::reset (\begin{DoxyParamCaption}\item[{const T \&}]{val }\end{DoxyParamCaption})}
+
+
+
+Reset matrix with a value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to fill the matrix \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/vitorgreati/git-\/repos/tao/sources/include/linear\+\_\+algebra/Mat.\+h\end{DoxyCompactItemize}
