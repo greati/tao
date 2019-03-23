@@ -58,6 +58,7 @@ class Mat {
          *
          * @param row the row, starting at top
          * @param col the col, starting at left
+         * @return the element at row and col
          * */
         T operator()(int row, int col) const;
 
@@ -73,6 +74,7 @@ class Mat {
          * Matrix sum.
          *
          * @param rhs the rhs
+         * @return the sum
          * */
         Mat<T> operator+(const Mat<T>& rhs);
 
@@ -80,13 +82,22 @@ class Mat {
          * Matrix subtraction.
          *
          * @param rhs the rhs
+         * @return the subtraction
          * */
         Mat<T> operator-(const Mat<T>& rhs);
+
+        /**
+         * Unary matrix operator
+         *
+         * @return the additive inverse
+         * */
+        Mat<T> operator-();
 
         /**
          * Matrix product.
          *
          * @param rhs the rhs
+         * @return the convertional matrix pruduct
          * */
         Mat<T> operator*(const Mat<T>& rhs);
 
@@ -94,6 +105,7 @@ class Mat {
          * Matrix product.
          *
          * @param rhs the rhs
+         * @return true if equal
          * */
         bool operator==(const Mat<T>& rhs);
 
@@ -125,6 +137,13 @@ class Mat {
          * @return the resulting matrix
          * */
         Mat<T> element_wise(const Mat<T>& rhs, std::function<T(T, T)> operation);
+
+        /**
+         * Computes the transpose of a matrix.
+         *
+         * @return a new matrix which is the transpose
+         * */
+        Mat<T> t();
 
     private:
 

@@ -2,6 +2,7 @@
 #define __COL__
 
 #include "Mat.h"
+#include "Row.h"
 
 namespace tao {
 template<typename T>
@@ -23,6 +24,13 @@ class Col : public Mat<T> {
          * @return component value
          * */
         T operator()(int i);
+
+        /**
+         * Returns the corresponding row vector.
+         *
+         * @return the row vector
+         * */
+        Row<T> t();
 
 };
 };

@@ -17,6 +17,13 @@ class Row : public Mat<T> {
         Row(const std::initializer_list<T> & components);
 
         /**
+         * Construct a row by size.
+         *
+         * @param size the number of cols
+         * */
+        Row(int cols) : Mat<T>{1, cols} {/*empty*/}
+
+        /**
          * Vector access operator.
          *
          * @param pos component position

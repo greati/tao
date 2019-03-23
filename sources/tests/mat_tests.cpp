@@ -190,6 +190,8 @@ namespace {
 
         ASSERT_TRUE(mat1 + mat2 == matsum);
         ASSERT_TRUE((mat1 - mat2) == matsub);
+        ASSERT_TRUE(-matsum == (tao::Mat<double>{{-6.0, -8.0},{-10.0, -12.0}}));
+        ASSERT_TRUE(-matsub == (tao::Mat<double>{{4.0, 4.0},{4.0, 4.0}}));
     }
 
     TEST(MatDouble, MatrixMultiplication) {

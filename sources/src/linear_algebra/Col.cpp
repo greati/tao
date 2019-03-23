@@ -12,6 +12,14 @@ T tao::Col<T>::operator()(int i) {
     return Mat<T>::operator()(i, 0);
 }
 
+template<typename T>
+tao::Row<T> tao::Col<T>::t() {
+    Row<T> row (this->rows);
+    for (auto i = 0; i < this->rows; ++i)
+        row(i) = (*this)(i); 
+    return row;
+}
+
 template class tao::Col<double>;
 template class tao::Col<float>;
 template class tao::Col<int>;

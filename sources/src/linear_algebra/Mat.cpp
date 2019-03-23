@@ -146,6 +146,11 @@ tao::Mat<T> tao::Mat<T>::operator-(const tao::Mat<T>& rhs) {
 }
 
 template<typename T>
+tao::Mat<T> tao::Mat<T>::operator-() {
+    return this->element_wise((*this), [](T x, T y) { return -x; });
+}
+
+template<typename T>
 tao::Mat<T> tao::Mat<T>::operator*(const tao::Mat<T>& rhs) {
     if (this->ncols() != rhs.nrows())
         throw std::invalid_argument("can't multiply m x n and p x k, with n neq p");
@@ -158,6 +163,17 @@ tao::Mat<T> tao::Mat<T>::operator*(const tao::Mat<T>& rhs) {
         }
     }
     return mat;
+}
+
+template<typename T>
+tao::Mat<T> tao::Mat<T>::t() {
+    Mat<T> transp {cols, rows};
+    for (auto i = 0; i < cols; ++i) {
+        for (auto j = 0; j < rows; ++j) {
+            transp(i, j) = (*this)(j, i);        
+        }
+    }
+    return transp;
 }
 
 template class tao::Mat<float>;
