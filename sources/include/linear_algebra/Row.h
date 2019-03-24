@@ -19,7 +19,7 @@ class Row : public Mat<T> {
         /**
          * Construct a column vector from an Nx1 matrix.
          * */
-        Row(const tao::Mat<T> & colmat);
+        Row(const tao::Mat<T> & rowmat);
 
         /**
          * Construct a row by size.
@@ -49,7 +49,7 @@ class Row : public Mat<T> {
          *
          * @param c2 the rhs
          * */
-        Row<T> operator*(const Col<T>& c2);
+        Row<T> operator*(const Row<T>& c2);
 
         /**
          * Vector dot product

@@ -22,12 +22,12 @@ T& tao::Row<T>::operator()(int i) {
 
 template<typename T>
 tao::Row<T> tao::Row<T>::operator*(const tao::Row<T>& c2) {
-    return (*this) * c2.t();
+    return this->element_wise(c2, [](T x, T y){return x * y; });
 }
 
 template<typename T>
-T dot(const tao::Row<T>& c2) {
-    
+T tao::Row<T>::dot(const tao::Row<T>& c2) {
+    return ((*this) * c2.t())(0, 0); 
 }
 
 template class tao::Row<double>;
