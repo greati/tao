@@ -1,6 +1,6 @@
-# cmake-gtests template
+# tao
 
-Template for C++ projects with cmake and googletests integration.
+Mathematical library written in modern C++.
 
 ## Build
 
