@@ -17,6 +17,11 @@ class Row : public Mat<T> {
         Row(const std::initializer_list<T> & components);
 
         /**
+         * Construct a column vector from an Nx1 matrix.
+         * */
+        Row(const tao::Mat<T> & colmat);
+
+        /**
          * Construct a row by size.
          *
          * @param size the number of cols
@@ -38,6 +43,20 @@ class Row : public Mat<T> {
          * @return component value
          * */
         T& operator()(int i);
+
+        /**
+         * Vector element-wise multiplication
+         *
+         * @param c2 the rhs
+         * */
+        Row<T> operator*(const Col<T>& c2);
+
+        /**
+         * Vector dot product
+         *
+         * @param c2 the rhs
+         * */
+        T dot(const Row<T>& c2);
 };
 };
 

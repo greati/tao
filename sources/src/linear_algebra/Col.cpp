@@ -21,16 +21,13 @@ T& tao::Col<T>::operator()(int i) {
 }
 
 template<typename T>
-tao::Row<T> tao::Col<T>::t() {
-    Row<T> row (this->rows);
-    for (auto i = 0; i < this->rows; ++i)
-        row(i) = (*this)(i); 
-    return row;
+tao::Col<T> tao::Col<T>::operator*(const tao::Col<T>& c2) {
+    return (*this).t() * c2;
 }
 
 template<typename T>
-tao::Col<T> tao::Col<T>::operator*(const tao::Col<T>& c2) {
-    return (*this).t() * c2;
+T dot(const tao::Col<T>& c2) {
+    
 }
 
 template class tao::Col<double>;

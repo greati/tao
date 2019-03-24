@@ -39,18 +39,18 @@ class Col : public Mat<T> {
         T& operator()(int i);
 
         /**
-         * Returns the corresponding row vector.
+         * Vector element-wise multiplication
          *
-         * @return the row vector
+         * @param c2 the rhs
          * */
-        Row<T> t();
+        Col<T> operator*(const Col<T>& c2);
 
         /**
          * Vector dot product
          *
          * @param c2 the rhs
          * */
-        Col<T> operator*(const Col<T>& c2);
+        T dot(const Col<T>& c2);
 };
 };
 

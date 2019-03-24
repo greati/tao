@@ -8,6 +8,9 @@ tao::Row<T>::Row(const std::initializer_list<T> & components) : Mat<T>(1, compon
 }
 
 template<typename T>
+tao::Row<T>::Row(const Mat<T>& rowmat) : Mat<T>(rowmat) { /*empty*/ }
+
+template<typename T>
 T tao::Row<T>::operator()(int i) const {
     return Mat<T>::operator()(0, i);
 }
@@ -15,6 +18,16 @@ T tao::Row<T>::operator()(int i) const {
 template<typename T>
 T& tao::Row<T>::operator()(int i) {
     return Mat<T>::operator()(0, i);
+}
+
+template<typename T>
+tao::Row<T> tao::Row<T>::operator*(const tao::Row<T>& c2) {
+    return (*this) * c2.t();
+}
+
+template<typename T>
+T dot(const tao::Row<T>& c2) {
+    
 }
 
 template class tao::Row<double>;
