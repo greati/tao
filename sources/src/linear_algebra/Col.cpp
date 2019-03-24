@@ -8,7 +8,15 @@ tao::Col<T>::Col(const std::initializer_list<T> & components) : Mat<T>(component
 }
 
 template<typename T>
-T tao::Col<T>::operator()(int i) {
+tao::Col<T>::Col(const Mat<T>& colmat) : Mat<T>(colmat) { /*empty*/ }
+
+template<typename T>
+T tao::Col<T>::operator()(int i) const {
+    return Mat<T>::operator()(i, 0);
+}
+
+template<typename T>
+T& tao::Col<T>::operator()(int i) {
     return Mat<T>::operator()(i, 0);
 }
 
@@ -18,6 +26,11 @@ tao::Row<T> tao::Col<T>::t() {
     for (auto i = 0; i < this->rows; ++i)
         row(i) = (*this)(i); 
     return row;
+}
+
+template<typename T>
+tao::Col<T> tao::Col<T>::operator*(const tao::Col<T>& c2) {
+    return (*this).t() * c2;
 }
 
 template class tao::Col<double>;

@@ -1,6 +1,15 @@
 #include "linear_algebra/Mat.h"
 
 template<typename T>
+tao::Mat<T>::Mat(const Mat<T>& other) {
+    this->rows = other.rows;
+    this->cols = other.cols;
+    this->data = std::move(std::make_unique<T[]>(this->rows * this->cols));
+    for (int i = 0; i < this->rows * this->cols; ++i)
+        this->data[i] = other.data[i];
+}
+
+template<typename T>
 tao::Mat<T>::Mat(int dim) : tao::Mat<T>::Mat(dim, dim) { /* empty */}
 
 template<typename T>

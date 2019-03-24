@@ -18,12 +18,25 @@ class Col : public Mat<T> {
         Col(const std::initializer_list<T> & components);
 
         /**
-         * Vector access operator.
+         * Construct a column vector from an Nx1 matrix.
+         * */
+        Col(const tao::Mat<T> & colmat);
+
+        /**
+         * Vector read-only access operator.
          *
          * @param pos component position
          * @return component value
          * */
-        T operator()(int i);
+        T operator()(int i) const;
+
+        /**
+         * Vector reference access operator.
+         *
+         * @param pos component position
+         * @return component value
+         * */
+        T& operator()(int i);
 
         /**
          * Returns the corresponding row vector.
@@ -32,6 +45,12 @@ class Col : public Mat<T> {
          * */
         Row<T> t();
 
+        /**
+         * Vector dot product
+         *
+         * @param c2 the rhs
+         * */
+        Col<T> operator*(const Col<T>& c2);
 };
 };
 

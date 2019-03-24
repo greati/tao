@@ -8,7 +8,12 @@ tao::Row<T>::Row(const std::initializer_list<T> & components) : Mat<T>(1, compon
 }
 
 template<typename T>
-T tao::Row<T>::operator()(int i) {
+T tao::Row<T>::operator()(int i) const {
+    return Mat<T>::operator()(0, i);
+}
+
+template<typename T>
+T& tao::Row<T>::operator()(int i) {
     return Mat<T>::operator()(0, i);
 }
 

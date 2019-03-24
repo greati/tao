@@ -29,7 +29,15 @@ class Row : public Mat<T> {
          * @param pos component position
          * @return component value
          * */
-        T operator()(int i);
+        T operator()(int i) const;
+
+        /**
+         * Vector reference access operator.
+         *
+         * @param pos component position
+         * @return component value
+         * */
+        T& operator()(int i);
 };
 };
 

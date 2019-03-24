@@ -54,6 +54,13 @@ class Mat {
         Mat(const std::initializer_list<std::initializer_list<T>>& elements);
 
         /**
+         * Copy constructor.
+         *
+         * @param the mat to be copied
+         * */
+        Mat(const Mat<T>&);
+
+        /**
          * Row-column read-only access operator.
          *
          * @param row the row, starting at top
