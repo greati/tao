@@ -194,6 +194,34 @@ namespace {
         ASSERT_TRUE(-matsub == (tao::Mat<double>{{4.0, 4.0},{4.0, 4.0}}));
     }
 
+    TEST(MatDouble, ElementWiseOperationsAssignment) {
+        tao::Mat<double> mat1 {
+            {1.0, 2.0},
+            {3.0, 4.0}
+        }; 
+
+        tao::Mat<double> mat2 {
+            {5.0, 6.0},
+            {7.0, 8.0}
+        };
+
+        tao::Mat<double> matsum {
+            {6.0, 8.0},
+            {10.0, 12.0}
+        };
+
+        mat1 += mat2;
+        ASSERT_TRUE(mat1 == matsum);
+
+        tao::Mat<double> matsub {
+            {-4.0, -4.0},
+            {-4.0, -4.0}
+        };
+
+        mat1 -= mat2;
+        ASSERT_TRUE(mat1 == (matsum - mat2));
+    }
+
     TEST(MatDouble, MatrixMultiplication) {
         tao::Mat<double> mat1 {
             {1.0, 2.0},
@@ -212,6 +240,45 @@ namespace {
 
         ASSERT_TRUE((mat1 * mat2) == (tao::Mat<double>{{19.0, 22.0},{43.0, 50.0}}));
         ASSERT_TRUE((mat1 * mat3) == (tao::Mat<double>{{19.0, 22.0, 32.0}, {43.0, 50.0, 74.0}}));
+    }
+
+    TEST(MatDouble, MatrixMultiplicationAssign) {
+        tao::Mat<double> mat1 {
+            {1.0, 2.0},
+            {3.0, 4.0}
+        }; 
+
+        tao::Mat<double> mat2 {
+            {5.0, 6.0},
+            {7.0, 8.0}
+        };
+        
+        mat1 *= mat2;
+
+        ASSERT_TRUE(mat1 == (tao::Mat<double>{{19.0, 22.0},{43.0, 50.0}}));
+    }
+
+    TEST(MatDouble, ScalarMult) {
+        tao::Mat<double> mat = {
+            {10.0, 20.0, 4.0},
+            {5.0, 10.0, 3.0}
+        };
+
+        ASSERT_TRUE((2.0 * mat) == (tao::Mat<double>{{20.0, 40.0, 8.0}, {10.0, 20.0, 6.0}}));
+        ASSERT_TRUE((mat * 2.0) == (tao::Mat<double>{{20.0, 40.0, 8.0}, {10.0, 20.0, 6.0}}));
+    }
+
+    TEST(MatDouble, ScalarDiv) {
+        tao::Mat<double> mat = {
+            {10.0, 20.0, 4.0},
+            {5.0, 10.0, 3.0}
+        };
+
+        ASSERT_TRUE((2.0 / mat) == (tao::Mat<double>{
+                    {2.0/10.0, 2.0/20.0, 2.0/4.0}, 
+                    {2.0/5.0, 2.0/10.0, 2.0/3.0}})
+                );
+        ASSERT_TRUE((mat / 2.0) == (tao::Mat<double>{{5.0, 10.0, 2.0}, {5.0/2.0, 5.0, 3.0/2.0}}));
     }
 
 };

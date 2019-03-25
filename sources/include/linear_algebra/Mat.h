@@ -78,7 +78,7 @@ class Mat {
         T& operator()(int row, int col);
 
         /**
-         * Matrix sum.
+         * Matrix element-wise sum.
          *
          * @param rhs the rhs
          * @return the sum
@@ -86,12 +86,20 @@ class Mat {
         Mat<T> operator+(const Mat<T>& rhs);
 
         /**
-         * Matrix subtraction.
+         * Matrix subtraction element-wise.
          *
          * @param rhs the rhs
          * @return the subtraction
          * */
         Mat<T> operator-(const Mat<T>& rhs);
+
+        /**
+         * Matrix division element-wise.
+         *
+         * @param rhs the rhs
+         * @return the division
+         * */
+        Mat<T> operator/(const Mat<T>& rhs);
 
         /**
          * Unary matrix operator
@@ -107,6 +115,22 @@ class Mat {
          * @return the convertional matrix pruduct
          * */
         Mat<T> operator*(const Mat<T>& rhs);
+
+        /**
+         * Product between matrix and scalar.
+         *
+         * @param scalar the scalar rhs
+         * @return the matrix multiplied by the scalar
+         * */
+        Mat<T> operator*(const T scalar);
+
+        /**
+         * Division between matrix and scalar.
+         *
+         * @param scalar the scalar rhs
+         * @return the matrix multiplied by the scalar
+         * */
+        Mat<T> operator/(const T scalar);
 
         /**
          * Matrix product.
@@ -138,19 +162,75 @@ class Mat {
         void reset(const T& val);
 
         /**
-         * Performs an operation element-wise.
+         * Performs an operation element-wise, producing a new matrix.
          *
          * @param operation an operation
          * @return the resulting matrix
          * */
-        Mat<T> element_wise(const Mat<T>& rhs, std::function<T(T, T)> operation);
+        Mat<T> element_wise(const Mat<T>& rhs, std::function<T(T, T)> operation) const;
+
+        /**
+         * Performs an operation element-wise, modifying the current matrix.
+         *
+         * @param operation an operation
+         * @return the resulting matrix
+         * */
+        Mat<T>& element_wise_inplace(const Mat<T>& rhs, std::function<T(T, T)> operation);
 
         /**
          * Computes the transpose of a matrix.
          *
          * @return a new matrix which is the transpose
          * */
-        Mat<T> t();
+        Mat<T> t() const;
+
+        /**
+         * Sum and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of adding as a reference
+         * */
+        Mat<T>& operator+=(const Mat<T>&);
+
+        /**
+         * Multiply and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of multiplication as a reference
+         * */
+        Mat<T>& operator*=(const Mat<T>&);
+
+        /**
+         * Subtract and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of subtraction as a reference
+         * */
+        Mat<T>& operator-=(const Mat<T>&);
+
+        /**
+         * Divide and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of division as a reference
+         * */
+        Mat<T>& operator/=(const Mat<T>&);
+
+        /**
+         * Multiply by scalar and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of multiplication as a reference
+         * */
+        Mat<T>& operator*=(const T scalar);
+
+        /**
+         * Divide by scalar and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of multiplication as a reference
+         * */
+        Mat<T>& operator/=(const T scalar);
 
     private:
 
@@ -168,7 +248,26 @@ class Mat {
          * @return the size of the future matrix
          * */
         std::pair<int, int> validate(const std::initializer_list<std::initializer_list<T>>& elements);
+
+        /**
+         * Performs matrix multiplication.
+         *
+         * @param rhs the rhs
+         * @return the conventional matrix pruduct
+         * */
+        void multiply(const Mat<T>& m1, const Mat<T>& m2, Mat<T>& m3);
 };
+
+template<typename T>
+inline Mat<T> operator*(const T scalar, const Mat<T>& m) {
+    return m.element_wise(m, [&](T x, T y) { return scalar * x; });
+} 
+
+template<typename T>
+inline Mat<T> operator/(const T scalar, const Mat<T>& m) {
+    return m.element_wise(m, [&](T x, T y) { return scalar / x; });
+} 
+
 };
 
 #endif

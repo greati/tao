@@ -22,4 +22,11 @@ namespace {
         tao::Col<double> sum = col1 + col2;
         ASSERT_TRUE(sum == (tao::Col<double>{101.0, 202.0, 303.0}));
     }
+
+    TEST(ColDouble, VectorDot) {
+        tao::Col<double> col1 {1.0, 2.0, 3.0};
+        tao::Col<double> col2 {100.0, 200.0, 300.0};
+        double dotres = col1.dot(col2);
+        ASSERT_FLOAT_EQ(dotres, 1400.0);
+    }
 }

@@ -22,13 +22,6 @@ class Row : public Mat<T> {
         Row(const tao::Mat<T> & rowmat);
 
         /**
-         * Construct a row by size.
-         *
-         * @param size the number of cols
-         * */
-        Row(int cols) : Mat<T>{1, cols} {/*empty*/}
-
-        /**
          * Vector access operator.
          *
          * @param pos component position

@@ -27,7 +27,7 @@ tao::Row<T> tao::Row<T>::operator*(const tao::Row<T>& c2) {
 
 template<typename T>
 T tao::Row<T>::dot(const tao::Row<T>& c2) {
-    return ((*this) * c2.t())(0, 0); 
+    return Mat<T>::operator*(c2.t())(0, 0);
 }
 
 template class tao::Row<double>;
