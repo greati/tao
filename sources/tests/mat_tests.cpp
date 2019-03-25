@@ -242,22 +242,6 @@ namespace {
         ASSERT_TRUE((mat1 * mat3) == (tao::Mat<double>{{19.0, 22.0, 32.0}, {43.0, 50.0, 74.0}}));
     }
 
-    TEST(MatDouble, MatrixMultiplicationAssign) {
-        tao::Mat<double> mat1 {
-            {1.0, 2.0},
-            {3.0, 4.0}
-        }; 
-
-        tao::Mat<double> mat2 {
-            {5.0, 6.0},
-            {7.0, 8.0}
-        };
-        
-        mat1 *= mat2;
-
-        ASSERT_TRUE(mat1 == (tao::Mat<double>{{19.0, 22.0},{43.0, 50.0}}));
-    }
-
     TEST(MatDouble, ScalarMult) {
         tao::Mat<double> mat = {
             {10.0, 20.0, 4.0},

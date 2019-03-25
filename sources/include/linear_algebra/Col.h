@@ -3,6 +3,7 @@
 
 #include "Mat.h"
 #include "Row.h"
+#include <optional>
 
 namespace tao {
 template<typename T>
@@ -46,12 +47,62 @@ class Col : public Mat<T> {
         Col<T> operator*(const Col<T>& c2);
 
         /**
+         * Vector element-wise multiplication with assignment
+         *
+         * @param c2 the rhs
+         * @return a reference to the modified version
+         * */
+        Col<T>& operator*=(const Col<T>& c2);
+
+        /**
+         * Euclidean norm of the vector
+         *
+         * @return the euclidean norm
+         * */
+        T norm() const;
+
+        /**
+         * The corresponding unit vector
+         *
+         * @param inplace if the vector should be modified
+         * @return a new vector or nothing, depending on the inplace value
+         * */
+        std::optional<Col<T>> unit(bool inplace = false);
+
+        /**
          * Vector dot product
          *
          * @param c2 the rhs
          * */
         T dot(const Col<T>& c2);
+
+        /**
+         * Multiply by scalar and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of multiplication as a reference
+         * */
+        Col<T>& operator*=(const T scalar);
+
+        /**
+         * Divide by scalar and assignment.
+         *
+         * @param other the matrix to be added
+         * @return the result of multiplication as a reference
+         * */
+        Col<T>& operator/=(const T scalar);
 };
+
+template<typename T>
+inline Col<T> operator*(const T scalar, const Col<T>& m) {
+    return m.element_wise(m, [&](T x, T y) { return scalar * x; });
+} 
+
+template<typename T>
+inline Col<T> operator/(const T scalar, const Col<T>& m) {
+    return m.element_wise(m, [&](T x, T y) { return scalar / x; });
+}
+
 };
 
 #endif

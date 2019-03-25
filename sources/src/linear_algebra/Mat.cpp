@@ -182,12 +182,6 @@ tao::Mat<T>& tao::Mat<T>::operator-=(const tao::Mat<T>& rhs) {
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator*=(const tao::Mat<T>& rhs) {
-    this->multiply((*this), rhs, (*this));
-    return (*this);
-}
-
-template<typename T>
 tao::Mat<T>& tao::Mat<T>::operator/=(const tao::Mat<T>& rhs) {
     return this->element_wise_inplace(rhs, [](T x, T y) { return x / y; });
 }
@@ -205,6 +199,16 @@ tao::Mat<T> tao::Mat<T>::operator-() {
 template<typename T>
 tao::Mat<T> tao::Mat<T>::operator/(const tao::Mat<T>& rhs) {
     return this->element_wise(rhs, [](T x, T y) { return x / y; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator*=(const T scalar) {
+    return this->element_wise_inplace((*this), [&](T x, T y) { return scalar * x; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator/=(const T scalar) {
+    return this->element_wise_inplace((*this), [&](T x, T y) { return x / scalar; });
 }
 
 template<typename T>

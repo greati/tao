@@ -29,4 +29,13 @@ namespace {
         double dotres = col1.dot(col2);
         ASSERT_FLOAT_EQ(dotres, 1400.0);
     }
+
+    TEST(ColDouble, ScalarDiv) {
+        tao::Col<double> col1 {2.0, 4.0, 6.0};
+        ASSERT_TRUE((col1 / 2.0) == (tao::Col<double>{1.0, 2.0, 3.0}));
+        col1 /= 2.0;
+        ASSERT_TRUE(col1 == (tao::Col<double>{1.0, 2.0, 3.0}));
+        col1 *= 2.0;
+        ASSERT_TRUE(col1 == (tao::Col<double>{2.0, 4.0, 6.0}));
+    }
 }

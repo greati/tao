@@ -193,14 +193,6 @@ class Mat {
         Mat<T>& operator+=(const Mat<T>&);
 
         /**
-         * Multiply and assignment.
-         *
-         * @param other the matrix to be added
-         * @return the result of multiplication as a reference
-         * */
-        Mat<T>& operator*=(const Mat<T>&);
-
-        /**
          * Subtract and assignment.
          *
          * @param other the matrix to be added
