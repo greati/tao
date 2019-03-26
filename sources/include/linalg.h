@@ -1,15 +1,56 @@
 #ifndef __LINALG__
 #define __LINALG__
 
-#include "linear_algebra/Col.h"
-#include "linear_algebra/Row.h"
+#include "linalg/Col.h"
+#include "linalg/Row.h"
 
-using vec = Col<double>;
-using cvec = Col<double>;
-using vec_f = Col<float>;
-using cvec_f = Col<float>;
+/**
+ * tao mathematical library
+ * */
+namespace tao {
+/**
+ * A column vector of doubles.
+ * */
+using Vec = Col<double>;
 
-using rvec = Row<double>;
-using rvec_f = Row<double>;
+/**
+ * A column vector of doubles.
+ * */
+using CVec = Col<double>;
 
+/**
+ * A column vector of floats.
+ * */
+using VecF = Col<float>;
+
+/**
+ * A column vector of floats.
+ * */
+using CVecF = Col<float>;
+
+/**
+ * A column vector of ints.
+ * */
+using VecI = Col<int>;
+
+/**
+ * A column vector of ints.
+ * */
+using CVecI = Col<int>;
+
+/**
+ * A row vector of doubles.
+ * */
+using RVec = Row<double>;
+
+/**
+ * A row vector of floats.
+ * */
+using RVecF = Row<float>;
+
+/**
+ * A row vector of ints.
+ * */
+using RVecI = Row<int>;
+}
 #endif

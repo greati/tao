@@ -1,4 +1,13 @@
-#include "linear_algebra/Mat.h"
+#include "linalg/Mat.h"
+
+template<typename T>
+tao::Mat<T>::Mat(const Mat<T>& other) {
+    this->rows = other.rows;
+    this->cols = other.cols;
+    this->data = std::move(std::make_unique<T[]>(this->rows * this->cols));
+    for (int i = 0; i < this->rows * this->cols; ++i)
+        this->data[i] = other.data[i];
+}
 
 template<typename T>
 tao::Mat<T>::Mat(int dim) : tao::Mat<T>::Mat(dim, dim) { /* empty */}
@@ -109,9 +118,9 @@ std::pair<int, int> tao::Mat<T>::validate(const std::initializer_list<std::initi
 
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::element_wise(const tao::Mat<T>& rhs, std::function<T(T, T)> operation) {
+tao::Mat<T> tao::Mat<T>::element_wise(const tao::Mat<T>& rhs, std::function<T(T, T)> operation) const {
     if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
-        throw std::invalid_argument("can't sum matrices with different dimensions");
+        throw std::invalid_argument("can't operate element-wise on matrices with different dimensions");
     tao::Mat<T> mat {rhs.nrows(), rhs.ncols()};
     for (auto i = 0; i < rhs.nrows(); ++i) {
         for (auto j = 0; j < rhs.ncols(); ++j) {
@@ -121,6 +130,18 @@ tao::Mat<T> tao::Mat<T>::element_wise(const tao::Mat<T>& rhs, std::function<T(T,
     return mat;
 }
 
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::element_wise_inplace(const tao::Mat<T>& rhs, std::function<T(T, T)> operation) {
+    if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
+        throw std::invalid_argument("can't operate element-wise on matrices with different dimensions");
+    for (auto i = 0; i < rhs.nrows(); ++i) {
+        for (auto j = 0; j < rhs.ncols(); ++j) {
+            (*this)(i, j) = operation((*this)(i, j), rhs(i, j));
+        }
+    }
+    return (*this);
+}
 
 template<typename T>
 bool tao::Mat<T>::operator==(const tao::Mat<T>& rhs) {
@@ -136,8 +157,33 @@ bool tao::Mat<T>::operator==(const tao::Mat<T>& rhs) {
 }
 
 template<typename T>
+tao::Mat<T> tao::Mat<T>::operator*(const T scalar) {
+    return scalar * (*this);
+}
+
+template<typename T>
+tao::Mat<T> tao::Mat<T>::operator/(const T scalar) {
+    return (*this).element_wise((*this), [&](T x, T y) { return x / scalar; });
+}
+
+template<typename T>
 tao::Mat<T> tao::Mat<T>::operator+(const tao::Mat<T>& rhs) {
     return this->element_wise(rhs, [](T x, T y) { return x + y; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator+=(const tao::Mat<T>& rhs) {
+    return this->element_wise_inplace(rhs, [](T x, T y) { return x + y; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator-=(const tao::Mat<T>& rhs) {
+    return this->element_wise_inplace(rhs, [](T x, T y) { return x - y; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator/=(const tao::Mat<T>& rhs) {
+    return this->element_wise_inplace(rhs, [](T x, T y) { return x / y; });
 }
 
 template<typename T>
@@ -151,22 +197,48 @@ tao::Mat<T> tao::Mat<T>::operator-() {
 }
 
 template<typename T>
+tao::Mat<T> tao::Mat<T>::operator/(const tao::Mat<T>& rhs) {
+    return this->element_wise(rhs, [](T x, T y) { return x / y; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator*=(const T scalar) {
+    return this->element_wise_inplace((*this), [&](T x, T y) { return scalar * x; });
+}
+
+template<typename T>
+tao::Mat<T>& tao::Mat<T>::operator/=(const T scalar) {
+    return this->element_wise_inplace((*this), [&](T x, T y) { return x / scalar; });
+}
+
+template<typename T>
+void tao::Mat<T>::multiply(const tao::Mat<T>& m1, const tao::Mat<T>& m2, tao::Mat<T>& m3) {
+    if (m1.ncols() != m2.nrows())
+        throw std::invalid_argument("can't multiply m x n and p x k, with n neq p");
+    for (auto i = 0; i < m1.nrows(); ++i) {
+        for (auto j = 0; j < m2.ncols(); ++j) {
+            T vm3 = m3(i, j);
+            for (auto k = 0; k < m2.nrows(); ++k) {
+                auto vm1 = m1(i, k);
+                auto vm2 = m2(k, j);
+                m3(i, j) += (vm1 * vm2);//m1(i, k) * m2(k, j); 
+            }
+            m3(i, j) -= vm3;
+        }
+    }
+}
+
+template<typename T>
 tao::Mat<T> tao::Mat<T>::operator*(const tao::Mat<T>& rhs) {
     if (this->ncols() != rhs.nrows())
         throw std::invalid_argument("can't multiply m x n and p x k, with n neq p");
     tao::Mat<T> mat {this->nrows(), rhs.ncols()};
-    for (auto i = 0; i < this->nrows(); ++i) {
-        for (auto j = 0; j < rhs.ncols(); ++j) {
-            for (auto k = 0; k < rhs.nrows(); ++k) {
-                mat(i, j) += (*this)(i, k) * rhs(k, j); 
-            }
-        }
-    }
+    this->multiply((*this), rhs, mat);
     return mat;
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::t() {
+tao::Mat<T> tao::Mat<T>::t() const {
     Mat<T> transp {cols, rows};
     for (auto i = 0; i < cols; ++i) {
         for (auto j = 0; j < rows; ++j) {

@@ -100,6 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c26859cc4b8bf40eb26dd4335f2d3c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a2c26859cc4b8bf40eb26dd4335f2d3c0">Mat</a> (const std::initializer_list&lt; std::initializer_list&lt; T &gt;&gt; &amp;elements)</td></tr>
 <tr class="memdesc:a2c26859cc4b8bf40eb26dd4335f2d3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor based on an initializer list.  <a href="#a2c26859cc4b8bf40eb26dd4335f2d3c0">More...</a><br /></td></tr>
 <tr class="separator:a2c26859cc4b8bf40eb26dd4335f2d3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c591cbc3893506d9f97cf9f54e7adf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a74c591cbc3893506d9f97cf9f54e7adf">Mat</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;)</td></tr>
+<tr class="memdesc:a74c591cbc3893506d9f97cf9f54e7adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#a74c591cbc3893506d9f97cf9f54e7adf">More...</a><br /></td></tr>
+<tr class="separator:a74c591cbc3893506d9f97cf9f54e7adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a814d02bbf96dab62938912f792aa7994"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a814d02bbf96dab62938912f792aa7994">operator()</a> (int row, int col) const</td></tr>
 <tr class="memdesc:a814d02bbf96dab62938912f792aa7994"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row-column read-only access operator.  <a href="#a814d02bbf96dab62938912f792aa7994">More...</a><br /></td></tr>
 <tr class="separator:a814d02bbf96dab62938912f792aa7994"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,14 +110,26 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:acbc9f99c4f5dcb07eaf80a5de47dd135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row-column set access operator.  <a href="#acbc9f99c4f5dcb07eaf80a5de47dd135">More...</a><br /></td></tr>
 <tr class="separator:acbc9f99c4f5dcb07eaf80a5de47dd135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0046a4dad08630ac7846ee75c62453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a2c0046a4dad08630ac7846ee75c62453">operator+</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs)</td></tr>
-<tr class="memdesc:a2c0046a4dad08630ac7846ee75c62453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix sum.  <a href="#a2c0046a4dad08630ac7846ee75c62453">More...</a><br /></td></tr>
+<tr class="memdesc:a2c0046a4dad08630ac7846ee75c62453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix element-wise sum.  <a href="#a2c0046a4dad08630ac7846ee75c62453">More...</a><br /></td></tr>
 <tr class="separator:a2c0046a4dad08630ac7846ee75c62453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8f28099b694fd539b3f332001a27323"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#ab8f28099b694fd539b3f332001a27323">operator-</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs)</td></tr>
-<tr class="memdesc:ab8f28099b694fd539b3f332001a27323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix subtraction.  <a href="#ab8f28099b694fd539b3f332001a27323">More...</a><br /></td></tr>
+<tr class="memdesc:ab8f28099b694fd539b3f332001a27323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix subtraction element-wise.  <a href="#ab8f28099b694fd539b3f332001a27323">More...</a><br /></td></tr>
 <tr class="separator:ab8f28099b694fd539b3f332001a27323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324b5728269b251d69f21468ad8ffcb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a324b5728269b251d69f21468ad8ffcb8">operator/</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a324b5728269b251d69f21468ad8ffcb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix division element-wise.  <a href="#a324b5728269b251d69f21468ad8ffcb8">More...</a><br /></td></tr>
+<tr class="separator:a324b5728269b251d69f21468ad8ffcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e8b6781c578050af63763c07064c74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#ad3e8b6781c578050af63763c07064c74">operator-</a> ()</td></tr>
+<tr class="memdesc:ad3e8b6781c578050af63763c07064c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary matrix operator.  <a href="#ad3e8b6781c578050af63763c07064c74">More...</a><br /></td></tr>
+<tr class="separator:ad3e8b6781c578050af63763c07064c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbcf66fe10d05f3da269cabf891a02d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#adbcf66fe10d05f3da269cabf891a02d2">operator *</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs)</td></tr>
 <tr class="memdesc:adbcf66fe10d05f3da269cabf891a02d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix product.  <a href="#adbcf66fe10d05f3da269cabf891a02d2">More...</a><br /></td></tr>
 <tr class="separator:adbcf66fe10d05f3da269cabf891a02d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a667e3f07fa01585298bde607c3988d7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a667e3f07fa01585298bde607c3988d7e">operator *</a> (const T scalar)</td></tr>
+<tr class="memdesc:a667e3f07fa01585298bde607c3988d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Product between matrix and scalar.  <a href="#a667e3f07fa01585298bde607c3988d7e">More...</a><br /></td></tr>
+<tr class="separator:a667e3f07fa01585298bde607c3988d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d32bc53aff7c38b644d752aff8f94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#aea9d32bc53aff7c38b644d752aff8f94">operator/</a> (const T scalar)</td></tr>
+<tr class="memdesc:aea9d32bc53aff7c38b644d752aff8f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division between matrix and scalar.  <a href="#aea9d32bc53aff7c38b644d752aff8f94">More...</a><br /></td></tr>
+<tr class="separator:aea9d32bc53aff7c38b644d752aff8f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81150ed4254e70ab1f3058f159ad2218"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a81150ed4254e70ab1f3058f159ad2218">operator==</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs)</td></tr>
 <tr class="memdesc:a81150ed4254e70ab1f3058f159ad2218"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix product.  <a href="#a81150ed4254e70ab1f3058f159ad2218">More...</a><br /></td></tr>
 <tr class="separator:a81150ed4254e70ab1f3058f159ad2218"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,9 +142,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a503d508f8f80c64a494f323649f20c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a503d508f8f80c64a494f323649f20c55">reset</a> (const T &amp;val)</td></tr>
 <tr class="memdesc:a503d508f8f80c64a494f323649f20c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset matrix with a value.  <a href="#a503d508f8f80c64a494f323649f20c55">More...</a><br /></td></tr>
 <tr class="separator:a503d508f8f80c64a494f323649f20c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dcf415b762465ff6f6dd3e2390ada8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a8dcf415b762465ff6f6dd3e2390ada8c">element_wise</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs, std::function&lt; T(T, T)&gt; operation)</td></tr>
-<tr class="memdesc:a8dcf415b762465ff6f6dd3e2390ada8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs an operation element-wise.  <a href="#a8dcf415b762465ff6f6dd3e2390ada8c">More...</a><br /></td></tr>
-<tr class="separator:a8dcf415b762465ff6f6dd3e2390ada8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac50ede68a9cd5419c024375059e58d82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#ac50ede68a9cd5419c024375059e58d82">element_wise</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs, std::function&lt; T(T, T)&gt; operation) const</td></tr>
+<tr class="memdesc:ac50ede68a9cd5419c024375059e58d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs an operation element-wise, producing a new matrix.  <a href="#ac50ede68a9cd5419c024375059e58d82">More...</a><br /></td></tr>
+<tr class="separator:ac50ede68a9cd5419c024375059e58d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30af32aa950a254a6d192c8d4fff475c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a30af32aa950a254a6d192c8d4fff475c">element_wise_inplace</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;rhs, std::function&lt; T(T, T)&gt; operation)</td></tr>
+<tr class="memdesc:a30af32aa950a254a6d192c8d4fff475c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs an operation element-wise, modifying the current matrix.  <a href="#a30af32aa950a254a6d192c8d4fff475c">More...</a><br /></td></tr>
+<tr class="separator:a30af32aa950a254a6d192c8d4fff475c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e48aa6815857ca0895d41ce5fa3a021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a8e48aa6815857ca0895d41ce5fa3a021">t</a> () const</td></tr>
+<tr class="memdesc:a8e48aa6815857ca0895d41ce5fa3a021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the transpose of a matrix.  <a href="#a8e48aa6815857ca0895d41ce5fa3a021">More...</a><br /></td></tr>
+<tr class="separator:a8e48aa6815857ca0895d41ce5fa3a021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70b6648df7c7d5b74f7f9546664e8959"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a70b6648df7c7d5b74f7f9546664e8959">operator+=</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;)</td></tr>
+<tr class="memdesc:a70b6648df7c7d5b74f7f9546664e8959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum and assignment.  <a href="#a70b6648df7c7d5b74f7f9546664e8959">More...</a><br /></td></tr>
+<tr class="separator:a70b6648df7c7d5b74f7f9546664e8959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af149226e11460c2fc4a8418fcd3be0e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#af149226e11460c2fc4a8418fcd3be0e5">operator-=</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;)</td></tr>
+<tr class="memdesc:af149226e11460c2fc4a8418fcd3be0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtract and assignment.  <a href="#af149226e11460c2fc4a8418fcd3be0e5">More...</a><br /></td></tr>
+<tr class="separator:af149226e11460c2fc4a8418fcd3be0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1d47801ecd6ea9108ac059ff30587c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a5f1d47801ecd6ea9108ac059ff30587c">operator/=</a> (const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;)</td></tr>
+<tr class="memdesc:a5f1d47801ecd6ea9108ac059ff30587c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide and assignment.  <a href="#a5f1d47801ecd6ea9108ac059ff30587c">More...</a><br /></td></tr>
+<tr class="separator:a5f1d47801ecd6ea9108ac059ff30587c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1be00d15fef170c8edf9a339bdb147d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a1be00d15fef170c8edf9a339bdb147d6">operator *=</a> (const T scalar)</td></tr>
+<tr class="memdesc:a1be00d15fef170c8edf9a339bdb147d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply by scalar and assignment.  <a href="#a1be00d15fef170c8edf9a339bdb147d6">More...</a><br /></td></tr>
+<tr class="separator:a1be00d15fef170c8edf9a339bdb147d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe0c554ea07698a7b1289b9a9d4e329"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtao_1_1_mat.html#a7fe0c554ea07698a7b1289b9a9d4e329">operator/=</a> (const T scalar)</td></tr>
+<tr class="memdesc:a7fe0c554ea07698a7b1289b9a9d4e329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide by scalar and assignment.  <a href="#a7fe0c554ea07698a7b1289b9a9d4e329">More...</a><br /></td></tr>
+<tr class="separator:a7fe0c554ea07698a7b1289b9a9d4e329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -147,7 +183,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a22ea16d2a3e3a1da5eb7de57e5bf02c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22ea16d2a3e3a1da5eb7de57e5bf02c2">&#9670;&nbsp;</a></span>Mat() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ea16d2a3e3a1da5eb7de57e5bf02c2">&#9670;&nbsp;</a></span>Mat() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +212,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <a id="a8b2f68a1f5539462e6f4186bc5f8a5c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b2f68a1f5539462e6f4186bc5f8a5c7">&#9670;&nbsp;</a></span>Mat() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b2f68a1f5539462e6f4186bc5f8a5c7">&#9670;&nbsp;</a></span>Mat() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,7 +251,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <a id="a83589751aea3dcecc363068fd540a930"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83589751aea3dcecc363068fd540a930">&#9670;&nbsp;</a></span>Mat() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a83589751aea3dcecc363068fd540a930">&#9670;&nbsp;</a></span>Mat() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +297,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <a id="a2c26859cc4b8bf40eb26dd4335f2d3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c26859cc4b8bf40eb26dd4335f2d3c0">&#9670;&nbsp;</a></span>Mat() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c26859cc4b8bf40eb26dd4335f2d3c0">&#9670;&nbsp;</a></span>Mat() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,9 +324,37 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="a74c591cbc3893506d9f97cf9f54e7adf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74c591cbc3893506d9f97cf9f54e7adf">&#9670;&nbsp;</a></span>Mat() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::<a class="el" href="classtao_1_1_mat.html">Mat</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">the</td><td>mat to be copied </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8dcf415b762465ff6f6dd3e2390ada8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dcf415b762465ff6f6dd3e2390ada8c">&#9670;&nbsp;</a></span>element_wise()</h2>
+<a id="ac50ede68a9cd5419c024375059e58d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac50ede68a9cd5419c024375059e58d82">&#9670;&nbsp;</a></span>element_wise()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,12 +376,51 @@ template&lt;typename T&gt; </div>
         <tr>
           <td></td>
           <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs an operation element-wise, producing a new matrix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">operation</td><td>an operation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the resulting matrix </dd></dl>
+
+</div>
+</div>
+<a id="a30af32aa950a254a6d192c8d4fff475c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30af32aa950a254a6d192c8d4fff475c">&#9670;&nbsp;</a></span>element_wise_inplace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::element_wise_inplace </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; T(T, T)&gt;&#160;</td>
+          <td class="paramname"><em>operation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
           <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Performs an operation element-wise. </p>
+<p>Performs an operation element-wise, modifying the current matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">operation</td><td>an operation </td></tr>
@@ -389,7 +492,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <a id="adbcf66fe10d05f3da269cabf891a02d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbcf66fe10d05f3da269cabf891a02d2">&#9670;&nbsp;</a></span>operator *()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adbcf66fe10d05f3da269cabf891a02d2">&#9670;&nbsp;</a></span>operator *() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,6 +516,65 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the convertional matrix pruduct </dd></dl>
+
+</div>
+</div>
+<a id="a667e3f07fa01585298bde607c3988d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a667e3f07fa01585298bde607c3988d7e">&#9670;&nbsp;</a></span>operator *() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator * </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Product between matrix and scalar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scalar</td><td>the scalar rhs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the matrix multiplied by the scalar </dd></dl>
+
+</div>
+</div>
+<a id="a1be00d15fef170c8edf9a339bdb147d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1be00d15fef170c8edf9a339bdb147d6">&#9670;&nbsp;</a></span>operator *=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator *= </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiply by scalar and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the matrix to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of multiplication as a reference </dd></dl>
 
 </div>
 </div>
@@ -452,6 +614,7 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the element at row and col </dd></dl>
 
 </div>
 </div>
@@ -512,18 +675,48 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Matrix sum. </p>
+<p>Matrix element-wise sum. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rhs</td><td>the rhs </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the sum </dd></dl>
+
+</div>
+</div>
+<a id="a70b6648df7c7d5b74f7f9546664e8959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70b6648df7c7d5b74f7f9546664e8959">&#9670;&nbsp;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sum and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the matrix to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of adding as a reference </dd></dl>
 
 </div>
 </div>
 <a id="ab8f28099b694fd539b3f332001a27323"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8f28099b694fd539b3f332001a27323">&#9670;&nbsp;</a></span>operator-()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f28099b694fd539b3f332001a27323">&#9670;&nbsp;</a></span>operator-() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -540,13 +733,181 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Matrix subtraction. </p>
+<p>Matrix subtraction element-wise. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rhs</td><td>the rhs </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the subtraction </dd></dl>
+
+</div>
+</div>
+<a id="ad3e8b6781c578050af63763c07064c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e8b6781c578050af63763c07064c74">&#9670;&nbsp;</a></span>operator-() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unary matrix operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>the additive inverse </dd></dl>
+
+</div>
+</div>
+<a id="af149226e11460c2fc4a8418fcd3be0e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af149226e11460c2fc4a8418fcd3be0e5">&#9670;&nbsp;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtract and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the matrix to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of subtraction as a reference </dd></dl>
+
+</div>
+</div>
+<a id="a324b5728269b251d69f21468ad8ffcb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324b5728269b251d69f21468ad8ffcb8">&#9670;&nbsp;</a></span>operator/() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Matrix division element-wise. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>the rhs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the division </dd></dl>
+
+</div>
+</div>
+<a id="aea9d32bc53aff7c38b644d752aff8f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea9d32bc53aff7c38b644d752aff8f94">&#9670;&nbsp;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Division between matrix and scalar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scalar</td><td>the scalar rhs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the matrix multiplied by the scalar </dd></dl>
+
+</div>
+</div>
+<a id="a5f1d47801ecd6ea9108ac059ff30587c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1d47801ecd6ea9108ac059ff30587c">&#9670;&nbsp;</a></span>operator/=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtao_1_1_mat.html">Mat</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divide and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the matrix to be divided </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of division as a reference </dd></dl>
+
+</div>
+</div>
+<a id="a7fe0c554ea07698a7b1289b9a9d4e329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe0c554ea07698a7b1289b9a9d4e329">&#9670;&nbsp;</a></span>operator/=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt;&amp; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>scalar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Divide by scalar and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the matrix to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of multiplication as a reference </dd></dl>
 
 </div>
 </div>
@@ -575,6 +936,7 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true if equal </dd></dl>
 
 </div>
 </div>
@@ -606,8 +968,30 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="a8e48aa6815857ca0895d41ce5fa3a021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e48aa6815857ca0895d41ce5fa3a021">&#9670;&nbsp;</a></span>t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtao_1_1_mat.html">Mat</a>&lt;T&gt; <a class="el" href="classtao_1_1_mat.html">tao::Mat</a>&lt; T &gt;::t </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the transpose of a matrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>a new matrix which is the transpose </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/vitorgreati/git-repos/tao/sources/include/linear_algebra/<a class="el" href="_mat_8h_source.html">Mat.h</a></li>
+<li>/home/vitorgreati/git-repos/tao/sources/include/linalg/<a class="el" href="_mat_8h_source.html">Mat.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

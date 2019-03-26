@@ -30,7 +30,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(tao src/linear_algebra/Mat.cpp src/linear_algebra/Col.cpp src/linear_algebra/Row.cpp)
+add_library(tao src/linalg/Mat.cpp src/linalg/Col.cpp src/linalg/Row.cpp src/linalg/VecOperations.cpp)
 target_include_directories(tao PUBLIC include)
 
 # executables
@@ -58,10 +58,10 @@ set(test_sources ${test_sources}
     tests/row_tests.cpp
 )
 
-add_executable(maintest ${test_sources})
-target_link_libraries(maintest PRIVATE gtest PRIVATE tao)
-target_include_directories(maintest PRIVATE include)
+add_executable(taomaintest ${test_sources})
+target_link_libraries(taomaintest PRIVATE gtest PRIVATE tao)
+target_include_directories(taomaintest PRIVATE include)
 
-gtest_discover_tests(maintest)
+gtest_discover_tests(taomaintest)
 
 enable_testing()
