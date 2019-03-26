@@ -30,7 +30,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(tao src/linear_algebra/Mat.cpp src/linear_algebra/Col.cpp src/linear_algebra/Row.cpp)
+add_library(tao src/linalg/Mat.cpp src/linalg/Col.cpp src/linalg/Row.cpp src/linalg/VecOperations.cpp)
 target_include_directories(tao PUBLIC include)
 
 # executables

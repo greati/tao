@@ -203,7 +203,7 @@ class Mat {
         /**
          * Divide and assignment.
          *
-         * @param other the matrix to be added
+         * @param other the matrix to be divided
          * @return the result of division as a reference
          * */
         Mat<T>& operator/=(const Mat<T>&);

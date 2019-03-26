@@ -1,30 +1,28 @@
-#ifndef __COL__
-#define __COL__
+#ifndef __ROW__
+#define __ROW__
 
 #include "Mat.h"
-#include "Row.h"
-#include <optional>
 
 namespace tao {
 template<typename T>
-class Col : public Mat<T> {
+class Row : public Mat<T> {
 
     public:
 
         /**
-         * Construct a column vector from its components.
+         * Construct a row vector from its components.
          *
          * @param components the components
          * */
-        Col(const std::initializer_list<T> & components);
+        Row(const std::initializer_list<T> & components);
 
         /**
          * Construct a column vector from an Nx1 matrix.
          * */
-        Col(const tao::Mat<T> & colmat);
+        Row(const tao::Mat<T> & rowmat);
 
         /**
-         * Vector read-only access operator.
+         * Vector access operator.
          *
          * @param pos component position
          * @return component value
@@ -44,7 +42,7 @@ class Col : public Mat<T> {
          *
          * @param c2 the rhs
          * */
-        Col<T> operator*(const Col<T>& c2);
+        Row<T> operator*(const Row<T>& c2);
 
         /**
          * Vector element-wise multiplication with assignment
@@ -52,7 +50,15 @@ class Col : public Mat<T> {
          * @param c2 the rhs
          * @return a reference to the modified version
          * */
-        Col<T>& operator*=(const Col<T>& c2);
+        Row<T>& operator*=(const Row<T>& c2);
+
+        /**
+         * Vector element-wise division with assignment
+         *
+         * @param c2 the rhs
+         * @return a reference to the modified version
+         * */
+        Row<T>& operator/=(const Row<T>& c2);
 
         /**
          * Euclidean norm of the vector
@@ -67,14 +73,14 @@ class Col : public Mat<T> {
          * @param inplace if the vector should be modified
          * @return a new vector or nothing, depending on the inplace value
          * */
-        std::optional<Col<T>> unit(bool inplace = false);
+        std::optional<Row<T>> unit(bool inplace = false);
 
         /**
          * Vector dot product
          *
          * @param c2 the rhs
          * */
-        T dot(const Col<T>& c2);
+        T dot(const Row<T>& c2);
 
         /**
          * Multiply by scalar and assignment.
@@ -82,7 +88,7 @@ class Col : public Mat<T> {
          * @param other the matrix to be added
          * @return the result of multiplication as a reference
          * */
-        Col<T>& operator*=(const T scalar);
+        Row<T>& operator*=(const T scalar);
 
         /**
          * Divide by scalar and assignment.
@@ -90,19 +96,18 @@ class Col : public Mat<T> {
          * @param other the matrix to be added
          * @return the result of multiplication as a reference
          * */
-        Col<T>& operator/=(const T scalar);
+        Row<T>& operator/=(const T scalar);
 };
 
 template<typename T>
-inline Col<T> operator*(const T scalar, const Col<T>& m) {
+inline Row<T> operator*(const T scalar, const Row<T>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar * x; });
 } 
 
 template<typename T>
-inline Col<T> operator/(const T scalar, const Col<T>& m) {
+inline Row<T> operator/(const T scalar, const Row<T>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar / x; });
 }
-
 };
 
 #endif

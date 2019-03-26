@@ -22,6 +22,8 @@ T \& \mbox{\hyperlink{classtao_1_1_row_a7fd08f9e7db1efa569814fed6cc2f1eb}{operat
 \begin{DoxyCompactList}\small\item\em Vector element-\/wise multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ \& \mbox{\hyperlink{classtao_1_1_row_aae104163de5952bcd0d8e69edf68ab48}{operator $\ast$=}} (const \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ \&c2)
 \begin{DoxyCompactList}\small\item\em Vector element-\/wise multiplication with assignment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ \& \mbox{\hyperlink{classtao_1_1_row_a65ef8231aa9845eb90c3d0e0756cc140}{operator/=}} (const \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ \&c2)
+\begin{DoxyCompactList}\small\item\em Vector element-\/wise division with assignment. \end{DoxyCompactList}\item 
 T \mbox{\hyperlink{classtao_1_1_row_af88f032fa3e9ce20f1d16865cbc95c4f}{norm}} () const
 \begin{DoxyCompactList}\small\item\em Euclidean norm of the vector. \end{DoxyCompactList}\item 
 std\+::optional$<$ \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ $>$ \mbox{\hyperlink{classtao_1_1_row_a379792590698f785aee2563a963d8063}{unit}} (bool inplace=false)
@@ -177,10 +179,29 @@ Vector reference access operator.
 \begin{DoxyReturn}{Returns}
 component value 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classtao_1_1_row_a65ef8231aa9845eb90c3d0e0756cc140}\label{classtao_1_1_row_a65ef8231aa9845eb90c3d0e0756cc140}} 
+\index{tao::Row$<$ T $>$@{tao::Row$<$ T $>$}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!tao::Row$<$ T $>$@{tao::Row$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator/=()}{operator/=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{classtao_1_1_row}{Row}}$<$T$>$\& \mbox{\hyperlink{classtao_1_1_row}{tao\+::\+Row}}$<$ T $>$\+::operator/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$ T $>$ \&}]{c2 }\end{DoxyParamCaption})}
+
+
+
+Vector element-\/wise division with assignment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c2} & the rhs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to the modified version 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classtao_1_1_row_a371834f4a89b78eb98b6cd7de83a993f}\label{classtao_1_1_row_a371834f4a89b78eb98b6cd7de83a993f}} 
 \index{tao::Row$<$ T $>$@{tao::Row$<$ T $>$}!operator/=@{operator/=}}
 \index{operator/=@{operator/=}!tao::Row$<$ T $>$@{tao::Row$<$ T $>$}}
-\subsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+\subsubsection{\texorpdfstring{operator/=()}{operator/=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename T$>$ \\
 \mbox{\hyperlink{classtao_1_1_row}{Row}}$<$T$>$\& \mbox{\hyperlink{classtao_1_1_row}{tao\+::\+Row}}$<$ T $>$\+::operator/= (\begin{DoxyParamCaption}\item[{const T}]{scalar }\end{DoxyParamCaption})}
 
@@ -219,4 +240,4 @@ a new vector or nothing, depending on the inplace value
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/vitorgreati/git-\/repos/tao/sources/include/linear\+\_\+algebra/Row.\+h\end{DoxyCompactItemize}
+/home/vitorgreati/git-\/repos/tao/sources/include/linalg/Row.\+h\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
-#include "linear_algebra/Mat.h"
+#include "linalg/Mat.h"
 
 template<typename T>
 tao::Mat<T>::Mat(const Mat<T>& other) {

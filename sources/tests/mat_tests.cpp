@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "linear_algebra/Mat.h"
+#include "linalg/Mat.h"
 
 namespace {
 
@@ -178,6 +178,11 @@ namespace {
             {7.0, 8.0}
         };
 
+        tao::Mat<double> matdiv {
+            {1.0/5.0, 2.0/6.0},
+            {3.0/7.0, 4.0/8.0}
+        };
+
         tao::Mat<double> matsum {
             {6.0, 8.0},
             {10.0, 12.0}
@@ -190,6 +195,7 @@ namespace {
 
         ASSERT_TRUE(mat1 + mat2 == matsum);
         ASSERT_TRUE((mat1 - mat2) == matsub);
+        ASSERT_TRUE((mat1 / mat2) == matdiv);
         ASSERT_TRUE(-matsum == (tao::Mat<double>{{-6.0, -8.0},{-10.0, -12.0}}));
         ASSERT_TRUE(-matsub == (tao::Mat<double>{{4.0, 4.0},{4.0, 4.0}}));
     }
@@ -204,6 +210,9 @@ namespace {
             {5.0, 6.0},
             {7.0, 8.0}
         };
+
+        auto matd1 = mat1;
+        auto matd2 = mat2;
 
         tao::Mat<double> matsum {
             {6.0, 8.0},
@@ -220,6 +229,34 @@ namespace {
 
         mat1 -= mat2;
         ASSERT_TRUE(mat1 == (matsum - mat2));
+
+        tao::Mat<double> matdiv {
+            {1.0/5.0, 2.0/6.0},
+            {3.0/7.0, 4.0/8.0}
+        };
+        matd1 /= matd2;
+        ASSERT_TRUE(matd1 == (matdiv));
+
+    }
+
+
+    TEST(MatDouble, MatrixMultiplicationError) {
+        tao::Mat<double> mat1 {
+            {1.0},
+            {3.0}
+        }; 
+
+        tao::Mat<double> mat2 {
+            {5.0, 6.0},
+            {7.0, 8.0}
+        };   
+
+        tao::Mat<double> mat3 {
+            {1.0, 5.0} 
+        };
+    
+        ASSERT_THROW(mat1 * mat2, std::invalid_argument);    
+        ASSERT_THROW(mat2 * mat3, std::invalid_argument);    
     }
 
     TEST(MatDouble, MatrixMultiplication) {
@@ -250,6 +287,9 @@ namespace {
 
         ASSERT_TRUE((2.0 * mat) == (tao::Mat<double>{{20.0, 40.0, 8.0}, {10.0, 20.0, 6.0}}));
         ASSERT_TRUE((mat * 2.0) == (tao::Mat<double>{{20.0, 40.0, 8.0}, {10.0, 20.0, 6.0}}));
+
+        mat *= 2.0;
+        ASSERT_TRUE(mat == (tao::Mat<double>{{20.0, 40.0, 8.0}, {10.0, 20.0, 6.0}}));
     }
 
     TEST(MatDouble, ScalarDiv) {
@@ -263,6 +303,9 @@ namespace {
                     {2.0/5.0, 2.0/10.0, 2.0/3.0}})
                 );
         ASSERT_TRUE((mat / 2.0) == (tao::Mat<double>{{5.0, 10.0, 2.0}, {5.0/2.0, 5.0, 3.0/2.0}}));
+
+        mat /= 2.0;
+        ASSERT_TRUE(mat == (tao::Mat<double>{{5.0, 10.0, 2.0}, {5.0/2.0, 5.0, 3.0/2.0}}));
     }
 
 };

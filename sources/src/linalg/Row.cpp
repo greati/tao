@@ -1,5 +1,5 @@
-#include "linear_algebra/Row.h"
-#include "linear_algebra/Col.h"
+#include "linalg/Row.h"
+#include "linalg/Col.h"
 #include <cmath>
 
 template<typename T>
@@ -30,6 +30,12 @@ tao::Row<T> tao::Row<T>::operator*(const tao::Row<T>& c2) {
 template<typename T>
 tao::Row<T>& tao::Row<T>::operator*=(const tao::Row<T>& c2) {
     this->element_wise_inplace(c2, [](T x, T y){return x * y; });
+    return (*this);
+}
+
+template<typename T>
+tao::Row<T>& tao::Row<T>::operator/=(const tao::Row<T>& c2) {
+    this->element_wise_inplace(c2, [](T x, T y){return x / y; });
     return (*this);
 }
 

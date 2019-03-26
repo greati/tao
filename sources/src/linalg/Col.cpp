@@ -1,4 +1,4 @@
-#include "linear_algebra/Col.h"
+#include "linalg/Col.h"
 #include <cmath>
 
 template<typename T>
@@ -27,8 +27,19 @@ tao::Col<T> tao::Col<T>::operator*(const tao::Col<T>& c2) {
 }
 
 template<typename T>
+tao::Col<T> tao::Col<T>::operator*(const T scalar) {
+    return scalar * (*this);
+}
+
+template<typename T>
 tao::Col<T>& tao::Col<T>::operator*=(const tao::Col<T>& c2) {
     this->element_wise_inplace(c2, [](T x, T y){return x * y; });
+    return (*this);
+}
+
+template<typename T>
+tao::Col<T>& tao::Col<T>::operator/=(const tao::Col<T>& c2) {
+    this->element_wise_inplace(c2, [](T x, T y){return x / y; });
     return (*this);
 }
 
@@ -39,7 +50,7 @@ T tao::Col<T>::dot(const tao::Col<T>& c2) {
 
 template<typename T>
 T tao::Col<T>::norm() const {
-    Row<T> t = (*this).t();
+    Col<T> t = (*this);
     return std::sqrt(t.dot((*this)));
 }
 

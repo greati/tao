@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "linear_algebra/Row.h"
+#include "linalg/Row.h"
 
 namespace {
 
