@@ -11,6 +11,8 @@ class Col : public Mat<T> {
 
     public:
 
+        Col() : Mat<T>{3, 1} {/* empty */}
+
         /**
          * Construct a column vector from its components.
          *
