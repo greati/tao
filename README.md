@@ -2,6 +2,9 @@
 
 Mathematical library written in modern C++.
 
+Caution: tao is in its first steps, so not yet opmitized with common things
+like template expressions. I will get there...
+
 ## Build
 
 ```
