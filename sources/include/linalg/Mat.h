@@ -22,6 +22,8 @@ class Mat {
 
     public:
 
+        Mat() : Mat<T>{3} {/* empty */}
+
         /**
          * Constructor of square matrices based on size only.
          *
@@ -59,6 +61,14 @@ class Mat {
          * @param the mat to be copied
          * */
         Mat(const Mat<T>&);
+
+        /**
+         * Copy-assignment operator.
+         *
+         * @param other the other
+         * @return a reference to a copy
+         * */
+        Mat<T> & operator=(const Mat<T>& other);
 
         /**
          * Row-column read-only access operator.

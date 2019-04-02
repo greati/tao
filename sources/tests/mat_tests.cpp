@@ -55,7 +55,7 @@ namespace {
 
     TEST(MatDouble, InitializerAllEmptyError) {
         try {
-            tao::Mat<double> mat2 {};
+            tao::Mat<double> mat2 {{}};
             FAIL();
         } catch (std::invalid_argument& e) {
             SUCCEED();

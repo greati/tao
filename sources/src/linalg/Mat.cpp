@@ -143,6 +143,17 @@ tao::Mat<T>& tao::Mat<T>::element_wise_inplace(const tao::Mat<T>& rhs, std::func
     return (*this);
 }
 
+
+template<typename T>
+tao::Mat<T> & tao::Mat<T>::operator=(const tao::Mat<T>& other) {
+    this->rows = other.rows;
+    this->cols = other.cols;
+    this->data = std::move(std::make_unique<T[]>(this->rows * this->cols));
+    for (int i = 0; i < this->rows * this->cols; ++i)
+        this->data[i] = other.data[i];
+    return (*this);
+}
+
 template<typename T>
 bool tao::Mat<T>::operator==(const tao::Mat<T>& rhs) {
     if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
