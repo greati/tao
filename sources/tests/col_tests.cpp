@@ -107,13 +107,13 @@ namespace {
         tao::Col<double> col1 {1.0, 2.0, 3.0};
         tao::Col<double> col2 {1.0, 5.0, 7.0};
 
-        tao::Col<double> cross = tao::cross(col1, col2);
+        tao::Col<double> across = tao::cross(col1, col2);
 
-        ASSERT_NEAR(cross(0), -1.0, 0.0001);
-        ASSERT_NEAR(cross(1), -4.0, 0.0001);
-        ASSERT_NEAR(cross(2), 3.0, 0.0001);
+        ASSERT_NEAR(across(0), -1.0, 0.0001);
+        ASSERT_NEAR(across(1), -4.0, 0.0001);
+        ASSERT_NEAR(across(2), 3.0, 0.0001);
 
-        ASSERT_EQ(col1.dot(cross), 0.0);
-        ASSERT_EQ(col2.dot(cross), 0.0);
+        ASSERT_EQ(col1.dot(across), 0.0);
+        ASSERT_EQ(col2.dot(across), 0.0);
     }
 }
