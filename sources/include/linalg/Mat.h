@@ -234,6 +234,16 @@ class Mat {
          * */
         Mat<T>& operator/=(const T scalar);
 
+        /**
+         * Equality comparison with precision indication.
+         *
+         * @param m1 a matrix
+         * @param m2 another matrix
+         * @param the precision
+         * @return if m1 == m2 according to the precision
+         * */
+        bool eq(const Mat<T>& rhs, float precision = 0.0001) const;
+
     private:
 
         /**

@@ -259,6 +259,19 @@ tao::Mat<T> tao::Mat<T>::t() const {
     return transp;
 }
 
+template<typename T>
+bool tao::Mat<T>::eq(const Mat<T>& rhs, float precision) const {
+    if ((*this).ncols() != rhs.ncols() || (*this).nrows() != rhs.nrows())
+        return false;
+    for (auto i = 0; i < rhs.nrows(); ++i) {
+        for (auto j = 0; j < rhs.ncols(); ++j) {
+            if (std::abs((*this)(i, j) - rhs(i, j)) >= precision)
+                return false;
+        }
+    }
+    return true;   
+}
+
 template class tao::Mat<float>;
 template class tao::Mat<double>;
 template class tao::Mat<int>;

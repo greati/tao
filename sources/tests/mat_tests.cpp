@@ -308,4 +308,18 @@ namespace {
         ASSERT_TRUE(mat == (tao::Mat<double>{{5.0, 10.0, 2.0}, {5.0/2.0, 5.0, 3.0/2.0}}));
     }
 
+    TEST(MatDouble, FloatingEq) {
+        tao::Mat<double> mat1 = {
+            {10.0001, 20.0, 4.0},
+            {5.0, 10.0, 3.0}
+        };
+    
+        tao::Mat<double> mat2 = {
+            {10.000001, 20.0, 4.0},
+            {5.0, 10.0, 3.0}
+        };
+
+        ASSERT_TRUE(mat1.eq(mat2, 0.0001));
+    }
+
 };
