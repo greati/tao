@@ -42,6 +42,14 @@ class Col : public Mat<T> {
         T& operator()(int i);
 
         /**
+         * Vector difference
+         *
+         * @param c2 the other vector
+         * @return the difference
+         * */
+        inline Col<T> operator-(const Col<T>& c2) { return Mat<T>::operator-(c2); }
+
+        /**
          * Vector element-wise multiplication
          *
          * @param c2 the rhs

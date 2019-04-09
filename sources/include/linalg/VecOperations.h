@@ -13,7 +13,17 @@ namespace tao {
  * @param v2 the second vector
  * @return the cross product
  * */
-Vec cross(const Vec& v1, const Vec& v2);
+template<typename T>
+Col<T> cross(const Col<T>& v1, const Col<T>& v2) {
+    if (v1.nrows() != 3 or v2.nrows() != 3)
+        throw std::invalid_argument("cross product is defined only for 3d vectors");
+    return tao::Col<T>{
+        (v1(1) * v2(2) - v1(2) * v2(1)), 
+        (-(v1(0) * v2(2) - v1(2) * v2(0))), 
+        (v1(0) * v2(1) - v1(1) * v2(0))
+    };
+}
+
 
 };
 
