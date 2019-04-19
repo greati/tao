@@ -93,7 +93,7 @@ class Mat {
          * @param rhs the rhs
          * @return the sum
          * */
-        Mat<T> operator+(const Mat<T>& rhs);
+        Mat<T> operator+(const Mat<T>& rhs) const;
 
         /**
          * Matrix subtraction element-wise.

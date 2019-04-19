@@ -116,7 +116,7 @@ class Col : public Mat<T> {
          * @param scalar the scalar rhs
          * @return the matrix multiplied by the scalar
          * */
-        Col<T> operator*(const T scalar);
+        Col<T> operator*(const T scalar) const;
 };
 
 template<typename T>

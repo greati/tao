@@ -178,7 +178,7 @@ tao::Mat<T> tao::Mat<T>::operator/(const T scalar) {
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator+(const tao::Mat<T>& rhs) {
+tao::Mat<T> tao::Mat<T>::operator+(const tao::Mat<T>& rhs) const {
     return this->element_wise(rhs, [](T x, T y) { return x + y; });
 }
 

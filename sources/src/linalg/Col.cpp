@@ -27,7 +27,7 @@ tao::Col<T> tao::Col<T>::operator*(const tao::Col<T>& c2) {
 }
 
 template<typename T>
-tao::Col<T> tao::Col<T>::operator*(const T scalar) {
+tao::Col<T> tao::Col<T>::operator*(const T scalar) const {
     return scalar * (*this);
 }
 
