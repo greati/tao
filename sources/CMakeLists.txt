@@ -56,6 +56,7 @@ set(test_sources ${test_sources}
     tests/mat_tests.cpp
     tests/col_tests.cpp
     tests/row_tests.cpp
+    tests/comp_mat_tests.cpp
 )
 
 add_executable(taomaintest ${test_sources})
