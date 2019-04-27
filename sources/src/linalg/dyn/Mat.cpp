@@ -1,7 +1,7 @@
-#include "linalg/Mat.h"
+#include "tao/linalg/dyn/Mat.h"
 
 template<typename T>
-tao::Mat<T>::Mat(const Mat<T>& other) {
+tao::deprecated::Mat<T>::Mat(const Mat<T>& other) {
     this->rows = other.rows;
     this->cols = other.cols;
     this->data = std::move(std::make_unique<T[]>(this->rows * this->cols));
@@ -10,10 +10,10 @@ tao::Mat<T>::Mat(const Mat<T>& other) {
 }
 
 template<typename T>
-tao::Mat<T>::Mat(int dim) : tao::Mat<T>::Mat(dim, dim) { /* empty */}
+tao::deprecated::Mat<T>::Mat(int dim) : tao::deprecated::Mat<T>::Mat(dim, dim) { /* empty */}
 
 template<typename T>
-tao::Mat<T>::Mat(int rows, int cols) {
+tao::deprecated::Mat<T>::Mat(int rows, int cols) {
     if (rows <= 0)
         throw std::invalid_argument("negative rows number " + std::to_string(rows));
     if (cols <= 0)
@@ -24,7 +24,7 @@ tao::Mat<T>::Mat(int rows, int cols) {
 }
 
 template<typename T>
-tao::Mat<T>::Mat(int rows, int cols, T val) {
+tao::deprecated::Mat<T>::Mat(int rows, int cols, T val) {
     if (rows <= 0)
         throw std::invalid_argument("negative rows number " + std::to_string(rows));
     if (cols <= 0)
@@ -36,7 +36,7 @@ tao::Mat<T>::Mat(int rows, int cols, T val) {
 }
 
 template<typename T>
-tao::Mat<T>::Mat(const std::initializer_list<std::initializer_list<T>>& elements) {
+tao::deprecated::Mat<T>::Mat(const std::initializer_list<std::initializer_list<T>>& elements) {
     auto [rows, cols] = validate(elements);
     this->rows = rows;
     this->cols = cols;
@@ -45,7 +45,7 @@ tao::Mat<T>::Mat(const std::initializer_list<std::initializer_list<T>>& elements
 }
 
 template<typename T>
-T& tao::Mat<T>::operator()(int row, int col) {
+T& tao::deprecated::Mat<T>::operator()(int row, int col) {
     if (row < 0 || row >= rows)
         throw std::invalid_argument("invalid row access, when rows are " + std::to_string(rows)
                 + " and row is " + std::to_string(row));
@@ -56,7 +56,7 @@ T& tao::Mat<T>::operator()(int row, int col) {
 }
 
 template<typename T>
-T tao::Mat<T>::operator()(int row, int col) const {
+T tao::deprecated::Mat<T>::operator()(int row, int col) const {
     if (row < 0 || row >= rows)
         throw std::invalid_argument("invalid row access, when rows are " + std::to_string(rows)
                 + " and row is " + std::to_string(row));
@@ -67,14 +67,14 @@ T tao::Mat<T>::operator()(int row, int col) const {
 }
 
 template<typename T>
-void tao::Mat<T>::reset(const T& val) {
+void tao::deprecated::Mat<T>::reset(const T& val) {
     for (int i = 0; i < rows * cols; ++i) {
         this->data[i] = val;
     }
 }
 
 template<typename T>
-void tao::Mat<T>::populate(const std::initializer_list<std::initializer_list<T>>& elements) {
+void tao::deprecated::Mat<T>::populate(const std::initializer_list<std::initializer_list<T>>& elements) {
     auto elements_row_it = elements.begin();
     for (auto i = 0; i < rows; ++i) {
         auto elements_col_it = elements_row_it->begin();
@@ -89,7 +89,7 @@ void tao::Mat<T>::populate(const std::initializer_list<std::initializer_list<T>>
 }
 
 template<typename T>
-std::pair<int, int> tao::Mat<T>::validate(const std::initializer_list<std::initializer_list<T>>& elements) {
+std::pair<int, int> tao::deprecated::Mat<T>::validate(const std::initializer_list<std::initializer_list<T>>& elements) {
 
     if (elements.size() == 0)
         throw std::invalid_argument("empty column found");
@@ -118,10 +118,10 @@ std::pair<int, int> tao::Mat<T>::validate(const std::initializer_list<std::initi
 
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::element_wise(const tao::Mat<T>& rhs, std::function<T(T, T)> operation) const {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::element_wise(const tao::deprecated::Mat<T>& rhs, std::function<T(T, T)> operation) const {
     if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
         throw std::invalid_argument("can't operate element-wise on matrices with different dimensions");
-    tao::Mat<T> mat {rhs.nrows(), rhs.ncols()};
+    tao::deprecated::Mat<T> mat {rhs.nrows(), rhs.ncols()};
     for (auto i = 0; i < rhs.nrows(); ++i) {
         for (auto j = 0; j < rhs.ncols(); ++j) {
             mat(i, j) = operation((*this)(i, j), rhs(i, j));
@@ -132,7 +132,7 @@ tao::Mat<T> tao::Mat<T>::element_wise(const tao::Mat<T>& rhs, std::function<T(T,
 
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::element_wise_inplace(const tao::Mat<T>& rhs, std::function<T(T, T)> operation) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::element_wise_inplace(const tao::deprecated::Mat<T>& rhs, std::function<T(T, T)> operation) {
     if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
         throw std::invalid_argument("can't operate element-wise on matrices with different dimensions");
     for (auto i = 0; i < rhs.nrows(); ++i) {
@@ -145,7 +145,7 @@ tao::Mat<T>& tao::Mat<T>::element_wise_inplace(const tao::Mat<T>& rhs, std::func
 
 
 template<typename T>
-tao::Mat<T> & tao::Mat<T>::operator=(const tao::Mat<T>& other) {
+tao::deprecated::Mat<T> & tao::deprecated::Mat<T>::operator=(const tao::deprecated::Mat<T>& other) {
     this->rows = other.rows;
     this->cols = other.cols;
     this->data = std::move(std::make_unique<T[]>(this->rows * this->cols));
@@ -155,7 +155,7 @@ tao::Mat<T> & tao::Mat<T>::operator=(const tao::Mat<T>& other) {
 }
 
 template<typename T>
-bool tao::Mat<T>::operator==(const tao::Mat<T>& rhs) {
+bool tao::deprecated::Mat<T>::operator==(const tao::deprecated::Mat<T>& rhs) {
     if (rhs.ncols() != this->ncols() || rhs.nrows() != this->nrows())
         return false;
     for (auto i = 0; i < rhs.nrows(); ++i) {
@@ -168,62 +168,62 @@ bool tao::Mat<T>::operator==(const tao::Mat<T>& rhs) {
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator*(const T scalar) {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator*(const T scalar) {
     return scalar * (*this);
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator/(const T scalar) {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator/(const T scalar) {
     return (*this).element_wise((*this), [&](T x, T y) { return x / scalar; });
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator+(const tao::Mat<T>& rhs) const {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator+(const tao::deprecated::Mat<T>& rhs) const {
     return this->element_wise(rhs, [](T x, T y) { return x + y; });
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator+=(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::operator+=(const tao::deprecated::Mat<T>& rhs) {
     return this->element_wise_inplace(rhs, [](T x, T y) { return x + y; });
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator-=(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::operator-=(const tao::deprecated::Mat<T>& rhs) {
     return this->element_wise_inplace(rhs, [](T x, T y) { return x - y; });
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator/=(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::operator/=(const tao::deprecated::Mat<T>& rhs) {
     return this->element_wise_inplace(rhs, [](T x, T y) { return x / y; });
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator-(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator-(const tao::deprecated::Mat<T>& rhs) {
     return this->element_wise(rhs, [](T x, T y) { return x - y; });
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator-() {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator-() {
     return this->element_wise((*this), [](T x, T y) { return -x; });
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator/(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator/(const tao::deprecated::Mat<T>& rhs) {
     return this->element_wise(rhs, [](T x, T y) { return x / y; });
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator*=(const T scalar) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::operator*=(const T scalar) {
     return this->element_wise_inplace((*this), [&](T x, T y) { return scalar * x; });
 }
 
 template<typename T>
-tao::Mat<T>& tao::Mat<T>::operator/=(const T scalar) {
+tao::deprecated::Mat<T>& tao::deprecated::Mat<T>::operator/=(const T scalar) {
     return this->element_wise_inplace((*this), [&](T x, T y) { return x / scalar; });
 }
 
 template<typename T>
-void tao::Mat<T>::multiply(const tao::Mat<T>& m1, const tao::Mat<T>& m2, tao::Mat<T>& m3) {
+void tao::deprecated::Mat<T>::multiply(const tao::deprecated::Mat<T>& m1, const tao::deprecated::Mat<T>& m2, tao::deprecated::Mat<T>& m3) {
     if (m1.ncols() != m2.nrows())
         throw std::invalid_argument("can't multiply m x n and p x k, with n neq p");
     for (auto i = 0; i < m1.nrows(); ++i) {
@@ -240,16 +240,16 @@ void tao::Mat<T>::multiply(const tao::Mat<T>& m1, const tao::Mat<T>& m2, tao::Ma
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::operator*(const tao::Mat<T>& rhs) {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::operator*(const tao::deprecated::Mat<T>& rhs) {
     if (this->ncols() != rhs.nrows())
         throw std::invalid_argument("can't multiply m x n and p x k, with n neq p");
-    tao::Mat<T> mat {this->nrows(), rhs.ncols()};
+    tao::deprecated::Mat<T> mat {this->nrows(), rhs.ncols()};
     this->multiply((*this), rhs, mat);
     return mat;
 }
 
 template<typename T>
-tao::Mat<T> tao::Mat<T>::t() const {
+tao::deprecated::Mat<T> tao::deprecated::Mat<T>::t() const {
     Mat<T> transp {cols, rows};
     for (auto i = 0; i < cols; ++i) {
         for (auto j = 0; j < rows; ++j) {
@@ -260,7 +260,7 @@ tao::Mat<T> tao::Mat<T>::t() const {
 }
 
 template<typename T>
-bool tao::Mat<T>::eq(const Mat<T>& rhs, float precision) const {
+bool tao::deprecated::Mat<T>::eq(const Mat<T>& rhs, float precision) const {
     if ((*this).ncols() != rhs.ncols() || (*this).nrows() != rhs.nrows())
         return false;
     for (auto i = 0; i < rhs.nrows(); ++i) {
@@ -272,6 +272,6 @@ bool tao::Mat<T>::eq(const Mat<T>& rhs, float precision) const {
     return true;   
 }
 
-template class tao::Mat<float>;
-template class tao::Mat<double>;
-template class tao::Mat<int>;
+template class tao::deprecated::Mat<float>;
+template class tao::deprecated::Mat<double>;
+template class tao::deprecated::Mat<int>;

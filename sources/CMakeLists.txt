@@ -30,7 +30,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(tao src/linalg/Mat.cpp src/linalg/Col.cpp src/linalg/Row.cpp)
+add_library(tao src/linalg/dyn/Mat.cpp src/linalg/dyn/Col.cpp src/linalg/dyn/Row.cpp)
 target_include_directories(tao PUBLIC include)
 
 # executables
@@ -57,6 +57,7 @@ set(test_sources ${test_sources}
     tests/col_tests.cpp
     tests/row_tests.cpp
     tests/comp_mat_tests.cpp
+    tests/comp_dyn_mat_tests.cpp
 )
 
 add_executable(taomaintest ${test_sources})

@@ -3,6 +3,25 @@
 
 #include <memory>
 #include <functional>
+#include <array>
+#include <type_traits>
+
+enum StorageType {
+    Dynamic = 0
+};
+
+
+/*
+template<typename T>
+struct mat_storage_type_traits<Dynamic, Dynamic, T, std::unique_ptr<T>> {
+    typedef std::unique_ptr<T> matrix_storage_type;
+};
+
+template<int M, int N, typename T>
+struct mat_storage_type_traits<M, N, T, T[]> {
+    typedef T matrix_storage_type[M*N];
+};
+*/
 
 /**
  * Represents a matrix whose elements
@@ -11,12 +30,46 @@
  * @author Vitor Greati
  * */
 namespace tao {
+
+/**
+ * Traits to define the matrix storage type
+ * at compile time.
+ * */
+template<int M, int N, typename T>
+struct mat_storage_type_traits {
+    using matrix_storage_type = 
+        typename std::conditional<
+            (M==Dynamic && N==Dynamic),
+            typename std::unique_ptr<T[]>,
+            typename std::conditional<
+                (M != Dynamic && N != Dynamic),
+                std::array<T, M*N>,
+                std::array<T, M*N>
+            >::type
+        >::type;
+};
+
+template<int M, int N, typename T>
+struct mat_storage_initializer {
+    void initialize(typename mat_storage_type_traits<M, N, T>::matrix_storage_type& data, int _M, int _N) {}  
+};
+
+template<typename T>
+struct mat_storage_initializer<Dynamic, Dynamic, T> {
+    void initialize(typename mat_storage_type_traits<Dynamic, Dynamic, T>::matrix_storage_type& data, 
+            int _M, int _N) {
+        data = std::move(std::make_unique<T[]>(_M*_N)); 
+    }  
+};
+
 template<typename T, int NumberRows, int NumberCols>
 class Mat {
 
     protected:
 
-        T data[NumberRows * NumberCols];        /** Matrix data */
+        typename mat_storage_type_traits<NumberRows, NumberCols, T>::matrix_storage_type data;
+        mat_storage_initializer<NumberRows, NumberCols, T> storage_initializer;
+
         int rows {NumberRows};                  /** Number of rows */
         int cols {NumberCols};                  /** Number of cols */
 
@@ -32,7 +85,7 @@ class Mat {
          * */
         Mat(T initial) {
             for (auto i {0}; i < rows * cols; ++i)
-                *(data + i) = initial;
+                data[i] = initial;
         }
 
         /**
@@ -42,6 +95,11 @@ class Mat {
          * */
         Mat(const std::initializer_list<std::initializer_list<T>>& elements) {
             auto [r, c] = validate(elements);
+            this->rows = r;
+            this->cols = c;
+
+            storage_initializer.initialize(data, rows, cols);
+
             if (r != this->rows || c != this->cols)
                 throw std::invalid_argument("invalid matrix initialization, expected: (" 
                         + std::to_string(this->rows)
@@ -113,7 +171,6 @@ class Mat {
             return this->element_wise(rhs, [](T x, T y) { return x / y; });
         }
 
-
         /**
          * Unary matrix operator
          *
@@ -142,7 +199,6 @@ class Mat {
         Mat<T, NumberRows, NumberCols> operator/(const T scalar) {
             return (*this).element_wise((*this), [&](T x, T y) { return x / scalar; });
         }
-
 
         /**
          * The number of rows.
@@ -347,16 +403,16 @@ class Mat {
  * @param rhs the rhs
  * @return the conventional matrix pruduct
  * */
-template<typename T, int N, int M, int P>
-void multiply(const Mat<T, N, M>& m1, const Mat<T, M, P>& m2, 
-        Mat<T, N, P>& m3) {
+template<typename T, int M, int N, int P>
+void multiply(const Mat<T, M, N>& m1, const Mat<T, N, P>& m2, 
+        Mat<T, M, P>& m3) {
     for (auto i = 0; i < m1.nrows(); ++i) {
         for (auto j = 0; j < m2.ncols(); ++j) {
             T vm3 = m3(i, j);
             for (auto k = 0; k < m2.nrows(); ++k) {
                 auto vm1 = m1(i, k);
                 auto vm2 = m2(k, j);
-                m3(i, j) += (vm1 * vm2);//m1(i, k) * m2(k, j); 
+                m3(i, j) += (vm1 * vm2);
             }
             m3(i, j) -= vm3;
         }
@@ -369,21 +425,21 @@ void multiply(const Mat<T, N, M>& m1, const Mat<T, M, P>& m2,
  * @param rhs the rhs
  * @return the convertional matrix pruduct
  * */
-template<typename T, int N, int M, int P>
-Mat<T, N, P> operator*(const Mat<T, N, M>& lhs, 
-                       const Mat<T, M, P>& rhs) {
-    Mat<T, N, P> result { T(0) };
+template<typename T, int M, int N, int P>
+Mat<T, M, P> operator*(const Mat<T, M, N>& lhs, 
+                       const Mat<T, N, P>& rhs) {
+    Mat<T, M, P> result { T(0) };
     multiply(lhs, rhs, result);
     return result;
 }
 
-template<typename T, int N, int M>
-inline Mat<T, N, M> operator*(const T scalar, const Mat<T, N, M>& m) {
+template<typename T, int M, int N>
+inline Mat<T, M, N> operator*(const T scalar, const Mat<T, M, N>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar * x; });
 } 
 
-template<typename T, int N, int M>
-inline Mat<T, N, M> operator/(const T scalar, const Mat<T, N, M>& m) {
+template<typename T, int M, int N>
+inline Mat<T, M, N> operator/(const T scalar, const Mat<T, M, N>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar / x; });
 } 
 
@@ -393,9 +449,9 @@ inline Mat<T, N, M> operator/(const T scalar, const Mat<T, N, M>& m) {
  * @param rhs the rhs
  * @return true if equal
  * */
-template<typename T, int N, int M, int O, int P>
-bool operator==(const Mat<T, O, P>& lhs, const Mat<T, N, M>& rhs) {
-    if (O != N || P != M)
+template<typename T, int M, int N, int O, int P>
+bool operator==(const Mat<T, M, N>& lhs, const Mat<T, O, P>& rhs) {
+    if (O != M || P != N)
         return false;
     for (auto i = 0; i < rhs.nrows(); ++i) {
         for (auto j = 0; j < rhs.ncols(); ++j) {
@@ -406,6 +462,6 @@ bool operator==(const Mat<T, O, P>& lhs, const Mat<T, N, M>& rhs) {
     return true;
 }
 
-};
 
+};
 #endif

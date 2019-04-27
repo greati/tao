@@ -6,6 +6,7 @@
 #include <optional>
 
 namespace tao {
+namespace deprecated {
 template<typename T>
 class Col : public Mat<T> {
 
@@ -23,7 +24,7 @@ class Col : public Mat<T> {
         /**
          * Construct a column vector from an Nx1 matrix.
          * */
-        Col(const tao::Mat<T> & colmat);
+        Col(const tao::deprecated::Mat<T> & colmat);
 
         /**
          * Vector read-only access operator.
@@ -129,6 +130,7 @@ inline Col<T> operator/(const T scalar, const Col<T>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar / x; });
 }
 
+};
 };
 
 #endif

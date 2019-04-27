@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "linalg/fixed_size/Mat.h"
+#include "tao/linalg/Mat.h"
 
 namespace {
 
