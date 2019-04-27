@@ -10,25 +10,6 @@ enum StorageType {
     Dynamic = 0
 };
 
-
-/*
-template<typename T>
-struct mat_storage_type_traits<Dynamic, Dynamic, T, std::unique_ptr<T>> {
-    typedef std::unique_ptr<T> matrix_storage_type;
-};
-
-template<int M, int N, typename T>
-struct mat_storage_type_traits<M, N, T, T[]> {
-    typedef T matrix_storage_type[M*N];
-};
-*/
-
-/**
- * Represents a matrix whose elements
- * are parameterized.
- *
- * @author Vitor Greati
- * */
 namespace tao {
 
 /**
@@ -62,6 +43,12 @@ struct mat_storage_initializer<Dynamic, Dynamic, T> {
     }  
 };
 
+/**
+ * Represents a matrix whose elements
+ * are parameterized.
+ *
+ * @author Vitor Greati
+ * */
 template<typename T, int NumberRows, int NumberCols>
 class Mat {
 
@@ -86,6 +73,27 @@ class Mat {
         Mat(T initial) {
             for (auto i {0}; i < rows * cols; ++i)
                 data[i] = initial;
+        }
+
+
+        /**
+         * Construtor based on an initializer list.
+         *
+         * @param elements the elements
+         * */
+        Mat(const std::initializer_list<T>& elements) {
+            auto [r, c] = validate(elements);
+            this->rows = r;
+            this->cols = c;
+
+            storage_initializer.initialize(data, rows, cols);
+
+            if (r != this->rows || c != this->cols)
+                throw std::invalid_argument("invalid matrix initialization, expected: (" 
+                        + std::to_string(this->rows)
+                        + "," + std::to_string(this->cols) + "), got (" + std::to_string(r) 
+                        + "," + std::to_string(c) + ")");
+            populate(elements);
         }
 
         /**
@@ -115,7 +123,7 @@ class Mat {
          * @param col the col, starting at left
          * @return the element at row and col
          * */
-        T operator()(int row, int col) const {
+        T operator()(int row, int col=0) const {
             if (row < 0 || row >= rows)
                 throw std::invalid_argument("invalid row access, when rows are " + std::to_string(rows)
                         + " and row is " + std::to_string(row));
@@ -131,7 +139,7 @@ class Mat {
          * @param row the row, starting at top
          * @param col the col, starting at left
          * */
-        T& operator()(int row, int col) {
+        T& operator()(int row, int col=0) {
             if (row < 0 || row >= rows)
                 throw std::invalid_argument("invalid row access, when rows are " + std::to_string(rows)
                         + " and row is " + std::to_string(row));
@@ -366,6 +374,33 @@ class Mat {
         }
 
         /**
+         * Populate the data member given an initializer list.
+         *
+         * @param elements the elements
+         * */
+        void populate(const std::initializer_list<T>& elements) {
+            auto elements_row_it = elements.begin();
+
+            auto i {0};
+
+            for (auto e : elements) {
+                this->data[i] = e;
+                i++;
+            }
+/*
+            for (auto i = 0; i < rows; ++i) {
+                auto elements_col_it = elements_row_it->begin();
+                for (auto j = 0; j < cols; ++j) {
+                    this->data[i * cols + j] = *elements_col_it;
+                    elements_col_it++;
+                }
+                elements_row_it++;
+                if (elements_row_it == elements.end())
+                    break;
+            }*/
+        }
+
+        /**
          * Validate an initializer list to become a valid matrix.
          *
          * @param elements the list
@@ -393,6 +428,28 @@ class Mat {
                 }
             }
             return {rows, cols}; 
+        }
+
+        /**
+         * Validate an initializer list to become a valid matrix.
+         *
+         * @param elements the list
+         * @return the size of the future matrix
+         * */
+        std::pair<int, int> validate(const std::initializer_list<T>& elements) {
+            if (elements.size() == 0)
+                throw std::invalid_argument("empty column found");
+
+            if (NumberRows != Dynamic && NumberCols != Dynamic
+                    && elements.size() != NumberRows * NumberCols) {
+                throw std::invalid_argument("invalid number of elements in initializer: " +
+                        std::to_string(elements.size()));
+            }
+
+            if (NumberRows == Dynamic || NumberCols == Dynamic)
+                return {elements.size(), 1};
+
+            return {NumberRows, NumberCols}; 
         }
 
 };
@@ -428,7 +485,7 @@ void multiply(const Mat<T, M, N>& m1, const Mat<T, N, P>& m2,
 template<typename T, int M, int N, int P>
 Mat<T, M, P> operator*(const Mat<T, M, N>& lhs, 
                        const Mat<T, N, P>& rhs) {
-    Mat<T, M, P> result { T(0) };
+    Mat<T, M, P> result ( T(0) );
     multiply(lhs, rhs, result);
     return result;
 }
