@@ -194,7 +194,7 @@ class Mat {
          * @param scalar the scalar rhs
          * @return the matrix multiplied by the scalar
          * */
-        Mat<T, NumberRows, NumberCols> operator*(const T scalar) {
+        Mat<T, NumberRows, NumberCols> operator*(const T scalar) const {
             return scalar * (*this);
         }
 
@@ -204,7 +204,7 @@ class Mat {
          * @param scalar the scalar rhs
          * @return the matrix multiplied by the scalar
          * */
-        Mat<T, NumberRows, NumberCols> operator/(const T scalar) {
+        Mat<T, NumberRows, NumberCols> operator/(const T scalar) const {
             return (*this).element_wise((*this), [&](T x, T y) { return x / scalar; });
         }
 
