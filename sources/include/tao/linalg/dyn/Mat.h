@@ -11,6 +11,7 @@
  * @author Vitor Greati
  * */
 namespace tao {
+namespace deprecated {
 template<typename T>
 class Mat {
 
@@ -281,5 +282,5 @@ inline Mat<T> operator/(const T scalar, const Mat<T>& m) {
 } 
 
 };
-
+};
 #endif

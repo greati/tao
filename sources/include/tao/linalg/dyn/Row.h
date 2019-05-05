@@ -4,6 +4,7 @@
 #include "Mat.h"
 
 namespace tao {
+namespace deprecated {
 template<typename T>
 class Row : public Mat<T> {
 
@@ -19,7 +20,7 @@ class Row : public Mat<T> {
         /**
          * Construct a column vector from an Nx1 matrix.
          * */
-        Row(const tao::Mat<T> & rowmat);
+        Row(const tao::deprecated::Mat<T> & rowmat);
 
         /**
          * Vector access operator.
@@ -109,5 +110,5 @@ inline Row<T> operator/(const T scalar, const Row<T>& m) {
     return m.element_wise(m, [&](T x, T y) { return scalar / x; });
 }
 };
-
+};
 #endif
