@@ -38,7 +38,10 @@ Mat<T, N, 1> unitize(const Mat<T, N, 1>& v1) {
  * */
 template<typename T, int N>
 T dot(const Mat<T, N, 1>& v1, const Mat<T, N, 1>& v2) {
-    return (v1.t() * v2)(0);
+    T r { 0.0 };
+    for (auto i {0}; i < N; ++i)
+        r += v1(i) * v2(i);
+    return r;
 }
 
 /**
