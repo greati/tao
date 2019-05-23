@@ -61,6 +61,17 @@ Mat<T, 3, 1> cross(const Mat<T, 3, 1>& v1, const Mat<T, 3, 1>& v2) {
     };
 }
 
+template<typename T, int M, int N>
+Mat<T, M, N> abs(const Mat<T, M, N>& m1) {
+    Mat<T, M, N> res;
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            res(i, j) = std::abs(m1(i,j));
+        } 
+    }
+    return res;
+}
+
 };
 
 #endif
