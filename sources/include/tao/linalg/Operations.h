@@ -1,11 +1,10 @@
-#ifndef __VECOPERATIONS__
-#define __VECOPERATIONS__
+#ifndef _FIXED_TAO_OPERATIONS_
+#define _FIXED_TAO_OPERATIONS_
 
-#include "tao/core.h"
 #include <cmath>
+#include "tao/linalg/Mat.h"
 
 namespace tao {
-
 
 /**
  * Computes the norm of a vector.
@@ -71,6 +70,20 @@ Mat<T, M, N> abs(const Mat<T, M, N>& m1) {
     }
     return res;
 }
+
+template<typename T, int N>
+T distance(const Mat<T, N, 1>& v1, const Mat<T, N, 1>& v2) {
+    return norm(v1-v2);
+}
+
+template<typename T>
+T lerp(float t, const Mat<T, 3, 1>& p0, const tao::Mat<T, 3, 1>& p1) {
+    return (1 - t) * p0 + t * p1;
+}
+
+/*float lerp(float t, float v1, float v2) {
+    return (1 - t) * v1+ t * v2;
+}*/
 
 };
 

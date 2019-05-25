@@ -1,5 +1,5 @@
-#ifndef _CORE_
-#define _CORE_
+#ifndef _TAO_CORE_
+#define _TAO_CORE_
 
 #include "linalg/Mat.h"
 #include "linalg/Operations.h"
@@ -9,6 +9,12 @@
  * */
 namespace tao {
 
+/**
+ * An N-dimensional vector.
+ * */
+template<typename T, int N>
+using Vec = Mat<T, N, 1>;
+ 
 /**
  * A 2-dimensional vector.
  * */
@@ -41,6 +47,5 @@ using Vec2d = Vec2<double>;
  * */
 using Vec2f = Vec2<float>;
 
-
-}
+};
 #endif
