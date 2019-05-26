@@ -4,6 +4,10 @@
 #include "linalg/Mat.h"
 #include "linalg/Operations.h"
 
+
+#define INV_PI (1/M_PI)
+#define INV_2PI (1/(2*M_PI))
+
 /**
  * tao mathematical library
  * */

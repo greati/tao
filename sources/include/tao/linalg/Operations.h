@@ -81,6 +81,22 @@ T lerp(float t, const Mat<T, 3, 1>& p0, const tao::Mat<T, 3, 1>& p1) {
     return (1 - t) * p0 + t * p1;
 }
 
+template<typename T>
+float spherical_theta(const Mat<T, 3, 1>& v) {
+    auto norm = tao::norm(v);
+    if (norm > 0.0f)
+        return std::acos(v(2)/tao::norm(v)); 
+    return 0.0f;
+}
+
+template<typename T>
+float spherical_phi(const Mat<T, 3, 1>& v) {
+    if (v(0) != 0)
+        return std::atan(v(1)/v(0)); 
+    else 
+        return 0.0f;
+}
+
 /*float lerp(float t, float v1, float v2) {
     return (1 - t) * v1+ t * v2;
 }*/
