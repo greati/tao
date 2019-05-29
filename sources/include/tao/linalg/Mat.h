@@ -5,6 +5,7 @@
 #include <functional>
 #include <array>
 #include <type_traits>
+#include <iostream>
 
 enum StorageType {
     Dynamic = 0
@@ -519,6 +520,19 @@ bool operator==(const Mat<T, M, N>& lhs, const Mat<T, O, P>& rhs) {
     return true;
 }
 
-
 };
+
+template<typename T, int M, int N>
+std::ostream& operator<<(std::ostream& out, const tao::Mat<T, N, M>& mat) {
+    out << "[" << std::endl;
+    for (auto i {0}; i < M; ++i) {
+        for (auto j {0}; j < N; ++j) {
+            out << mat(i, j) << " ";
+        }
+        out << std::endl;
+    }
+    out << "]" << std::endl;
+    return out;
+}
+
 #endif
