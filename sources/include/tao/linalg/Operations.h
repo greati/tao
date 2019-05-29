@@ -92,7 +92,7 @@ float spherical_theta(const Mat<T, 3, 1>& v) {
 template<typename T>
 float spherical_phi(const Mat<T, 3, 1>& v) {
     if (v(0) != 0)
-        return std::atan(v(1)/v(0)); 
+        return std::atan2(v(1), v(0)); 
     else 
         return 0.0f;
 }
