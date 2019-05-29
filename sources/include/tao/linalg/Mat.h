@@ -522,11 +522,11 @@ bool operator==(const Mat<T, M, N>& lhs, const Mat<T, O, P>& rhs) {
 
 };
 
-template<typename T, int M, int N>
+template<typename T, int N, int M>
 std::ostream& operator<<(std::ostream& out, const tao::Mat<T, N, M>& mat) {
     out << "[" << std::endl;
-    for (auto i {0}; i < M; ++i) {
-        for (auto j {0}; j < N; ++j) {
+    for (auto i {0}; i < N; ++i) {
+        for (auto j {0}; j < M; ++j) {
             out << mat(i, j) << " ";
         }
         out << std::endl;
