@@ -134,6 +134,17 @@ float spherical_phi(const Mat<T, 3, 1>& v) {
         return 0.0f;
 }
 
+template<typename T, int M>
+bool is_identity(const Mat<T, M, M>& m) {
+   for (int i = 0; i < M; ++i) {
+       for (int j = 0; j < M; ++j) {
+            if (i == j && m(i, j) != 1) return false;
+            else if (i != j && m(i, j) != 0) return false;
+       }
+   } 
+   return true;
+}
+
 /*float lerp(float t, float v1, float v2) {
     return (1 - t) * v1+ t * v2;
 }*/

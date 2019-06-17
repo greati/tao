@@ -131,4 +131,24 @@ namespace {
 
         ASSERT_TRUE(tao::inverse(mat1).eq(mat1inv, 0.0001));
     }
+
+    TEST(LinalgOperations, Identity4x4) {
+        tao::Mat<float, 4, 4> matId = {
+            {1, 0, 0, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        };
+
+        ASSERT_TRUE(tao::is_identity(matId));
+
+        tao::Mat<float, 4, 4> matNotId1 = {
+            {1, 0, 1, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        };
+
+        ASSERT_FALSE(tao::is_identity(matNotId1));
+    }
 }
