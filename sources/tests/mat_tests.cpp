@@ -322,4 +322,5 @@ namespace {
         ASSERT_TRUE(mat1.eq(mat2, 0.0001));
     }
 
+
 };

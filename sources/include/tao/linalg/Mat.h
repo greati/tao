@@ -63,7 +63,14 @@ class Mat {
 
     public:
 
-        Mat() {/* empty */}
+        Mat() {/* empty */
+            for (int i = 0; i < NumberRows; ++i) {
+                for (int j = 0; j < NumberCols; ++j) {
+                    if (i == j) data[i] = 1;
+                    else data[i] = 0;
+                }
+            }
+        }
 
         /**
          * Constructor which initializes the matrix

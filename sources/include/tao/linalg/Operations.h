@@ -60,6 +60,43 @@ Mat<T, 3, 1> cross(const Mat<T, 3, 1>& v1, const Mat<T, 3, 1>& v2) {
     };
 }
 
+template<typename T>
+T det(const Mat<T, 4, 4>& mat) {
+   T value;
+   value =
+   mat(0,3)*mat(1,2)*mat(2,1)*mat(3,0) - mat(0,2)*mat(1,3)*mat(2,1)*mat(3,0) - mat(0,3)*mat(1,1)*mat(2,2)*mat(3,0) + mat(0,1)*mat(1,3)*mat(2,2)*mat(3,0)+
+   mat(0,2)*mat(1,1)*mat(2,3)*mat(3,0) - mat(0,1)*mat(1,2)*mat(2,3)*mat(3,0) - mat(0,3)*mat(1,2)*mat(2,0)*mat(3,1) + mat(0,2)*mat(1,3)*mat(2,0)*mat(3,1)+
+   mat(0,3)*mat(1,0)*mat(2,2)*mat(3,1) - mat(0,0)*mat(1,3)*mat(2,2)*mat(3,1) - mat(0,2)*mat(1,0)*mat(2,3)*mat(3,1) + mat(0,0)*mat(1,2)*mat(2,3)*mat(3,1)+
+   mat(0,3)*mat(1,1)*mat(2,0)*mat(3,2) - mat(0,1)*mat(1,3)*mat(2,0)*mat(3,2) - mat(0,3)*mat(1,0)*mat(2,1)*mat(3,2) + mat(0,0)*mat(1,3)*mat(2,1)*mat(3,2)+
+   mat(0,1)*mat(1,0)*mat(2,3)*mat(3,2) - mat(0,0)*mat(1,1)*mat(2,3)*mat(3,2) - mat(0,2)*mat(1,1)*mat(2,0)*mat(3,3) + mat(0,1)*mat(1,2)*mat(2,0)*mat(3,3)+
+   mat(0,2)*mat(1,0)*mat(2,1)*mat(3,3) - mat(0,0)*mat(1,2)*mat(2,1)*mat(3,3) - mat(0,1)*mat(1,0)*mat(2,2)*mat(3,3) + mat(0,0)*mat(1,1)*mat(2,2)*mat(3,3);
+   return value;
+}
+
+template<typename T>
+Mat<T, 4, 4> inverse(const Mat<T, 4, 4>& mat) {
+   Mat<T, 4, 4> m;
+   m(0,0) = mat(1,2)*mat(2,3)*mat(3,1) - mat(1,3)*mat(2,2)*mat(3,1) + mat(1,3)*mat(2,1)*mat(3,2) - mat(1,1)*mat(2,3)*mat(3,2) - mat(1,2)*mat(2,1)*mat(3,3) + mat(1,1)*mat(2,2)*mat(3,3);
+   m(0,1) = mat(0,3)*mat(2,2)*mat(3,1) - mat(0,2)*mat(2,3)*mat(3,1) - mat(0,3)*mat(2,1)*mat(3,2) + mat(0,1)*mat(2,3)*mat(3,2) + mat(0,2)*mat(2,1)*mat(3,3) - mat(0,1)*mat(2,2)*mat(3,3);
+   m(0,2) = mat(0,2)*mat(1,3)*mat(3,1) - mat(0,3)*mat(1,2)*mat(3,1) + mat(0,3)*mat(1,1)*mat(3,2) - mat(0,1)*mat(1,3)*mat(3,2) - mat(0,2)*mat(1,1)*mat(3,3) + mat(0,1)*mat(1,2)*mat(3,3);
+   m(0,3) = mat(0,3)*mat(1,2)*mat(2,1) - mat(0,2)*mat(1,3)*mat(2,1) - mat(0,3)*mat(1,1)*mat(2,2) + mat(0,1)*mat(1,3)*mat(2,2) + mat(0,2)*mat(1,1)*mat(2,3) - mat(0,1)*mat(1,2)*mat(2,3);
+   m(1,0) = mat(1,3)*mat(2,2)*mat(3,0) - mat(1,2)*mat(2,3)*mat(3,0) - mat(1,3)*mat(2,0)*mat(3,2) + mat(1,0)*mat(2,3)*mat(3,2) + mat(1,2)*mat(2,0)*mat(3,3) - mat(1,0)*mat(2,2)*mat(3,3);
+   m(1,1) = mat(0,2)*mat(2,3)*mat(3,0) - mat(0,3)*mat(2,2)*mat(3,0) + mat(0,3)*mat(2,0)*mat(3,2) - mat(0,0)*mat(2,3)*mat(3,2) - mat(0,2)*mat(2,0)*mat(3,3) + mat(0,0)*mat(2,2)*mat(3,3);
+   m(1,2) = mat(0,3)*mat(1,2)*mat(3,0) - mat(0,2)*mat(1,3)*mat(3,0) - mat(0,3)*mat(1,0)*mat(3,2) + mat(0,0)*mat(1,3)*mat(3,2) + mat(0,2)*mat(1,0)*mat(3,3) - mat(0,0)*mat(1,2)*mat(3,3);
+   m(1,3) = mat(0,2)*mat(1,3)*mat(2,0) - mat(0,3)*mat(1,2)*mat(2,0) + mat(0,3)*mat(1,0)*mat(2,2) - mat(0,0)*mat(1,3)*mat(2,2) - mat(0,2)*mat(1,0)*mat(2,3) + mat(0,0)*mat(1,2)*mat(2,3);
+   m(2,0) = mat(1,1)*mat(2,3)*mat(3,0) - mat(1,3)*mat(2,1)*mat(3,0) + mat(1,3)*mat(2,0)*mat(3,1) - mat(1,0)*mat(2,3)*mat(3,1) - mat(1,1)*mat(2,0)*mat(3,3) + mat(1,0)*mat(2,1)*mat(3,3);
+   m(2,1) = mat(0,3)*mat(2,1)*mat(3,0) - mat(0,1)*mat(2,3)*mat(3,0) - mat(0,3)*mat(2,0)*mat(3,1) + mat(0,0)*mat(2,3)*mat(3,1) + mat(0,1)*mat(2,0)*mat(3,3) - mat(0,0)*mat(2,1)*mat(3,3);
+   m(2,2) = mat(0,1)*mat(1,3)*mat(3,0) - mat(0,3)*mat(1,1)*mat(3,0) + mat(0,3)*mat(1,0)*mat(3,1) - mat(0,0)*mat(1,3)*mat(3,1) - mat(0,1)*mat(1,0)*mat(3,3) + mat(0,0)*mat(1,1)*mat(3,3);
+   m(2,3) = mat(0,3)*mat(1,1)*mat(2,0) - mat(0,1)*mat(1,3)*mat(2,0) - mat(0,3)*mat(1,0)*mat(2,1) + mat(0,0)*mat(1,3)*mat(2,1) + mat(0,1)*mat(1,0)*mat(2,3) - mat(0,0)*mat(1,1)*mat(2,3);
+   m(3,0) = mat(1,2)*mat(2,1)*mat(3,0) - mat(1,1)*mat(2,2)*mat(3,0) - mat(1,2)*mat(2,0)*mat(3,1) + mat(1,0)*mat(2,2)*mat(3,1) + mat(1,1)*mat(2,0)*mat(3,2) - mat(1,0)*mat(2,1)*mat(3,2);
+   m(3,1) = mat(0,1)*mat(2,2)*mat(3,0) - mat(0,2)*mat(2,1)*mat(3,0) + mat(0,2)*mat(2,0)*mat(3,1) - mat(0,0)*mat(2,2)*mat(3,1) - mat(0,1)*mat(2,0)*mat(3,2) + mat(0,0)*mat(2,1)*mat(3,2);
+   m(3,2) = mat(0,2)*mat(1,1)*mat(3,0) - mat(0,1)*mat(1,2)*mat(3,0) - mat(0,2)*mat(1,0)*mat(3,1) + mat(0,0)*mat(1,2)*mat(3,1) + mat(0,1)*mat(1,0)*mat(3,2) - mat(0,0)*mat(1,1)*mat(3,2);
+   m(3,3) = mat(0,1)*mat(1,2)*mat(2,0) - mat(0,2)*mat(1,1)*mat(2,0) + mat(0,2)*mat(1,0)*mat(2,1) - mat(0,0)*mat(1,2)*mat(2,1) - mat(0,1)*mat(1,0)*mat(2,2) + mat(0,0)*mat(1,1)*mat(2,2);
+   auto det = tao::det(mat);
+   return m.element_wise_inplace(m, [det](T x, T) {return x * (1.0/det);});
+}
+
+
 template<typename T, int M, int N>
 Mat<T, M, N> abs(const Mat<T, M, N>& m1) {
     Mat<T, M, N> res;
