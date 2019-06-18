@@ -9,9 +9,7 @@ namespace geometry {
      * @param degress
      * @return radians
      * */
-    float radians(float degrees) {
-        return M_PI * degrees / 180.0;
-    }
+    float radians(float degrees);
 };
 };
 

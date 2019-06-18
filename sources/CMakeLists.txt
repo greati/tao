@@ -33,7 +33,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # libraries
 # --------------------------------------- #
-add_library(tao src/linalg/dyn/Mat.cpp src/linalg/dyn/Col.cpp src/linalg/dyn/Row.cpp)
+add_library(tao src/linalg/dyn/Mat.cpp src/linalg/dyn/Col.cpp src/linalg/dyn/Row.cpp src/geometry/geometry.cpp)
 target_include_directories(tao PUBLIC include)
 
 # executables
