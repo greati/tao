@@ -124,6 +124,17 @@ class Mat {
             populate(elements);
         }
 
+        static Mat<T, NumberRows, NumberCols> identity() {
+             Mat<T, NumberRows, NumberCols> id;
+             for (int i = 0; i < NumberRows; ++i) {
+                 for (int j = 0; j < NumberRows; ++j) {
+                     if (i == j) id(i, j) = 1;
+                     else id(i, j) = 0;
+                 }
+             }
+             return id;
+        }
+
         /**
          * Row-column read-only access operator.
          *
